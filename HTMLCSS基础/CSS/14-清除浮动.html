@@ -11,14 +11,111 @@
         为将浮动元素框在一个固定范围内,需要定义一个父盒子,但是由于浮动元素的宽度不是固定的,所以不能定义父盒子高度。
         但是由于浮动元素并不占据位置(相当于在一个新的图层),所以父盒子的高度为0,这就导致后续的标准流盒子会占据该父盒子的位置
 
-        2.为什么要清除浮动:清除浮动元素造成的影响(如果父盒子定义了高度就不存在该影响)
+        2.为什么要清除浮动:清除浮动元素造成的影响(如果父盒子定义了高度就不存在该影响),清除浮动后父盒子就会根据子盒子自动检测高度(相当于给父盒子定义高度)
 
-        3.
+        3.如何清除浮动:闭合策略,即浮动只限于父盒子中,不影响父盒子外的盒子
+          语法:选择器{clear:属性值;}
+               属性值包括:
+                  ① left:清除左侧浮动
+                  ② right:清除右侧浮动
+                  ③ both:清除两侧浮动
+          方法1:额外标签法(隔墙法),在浮动元素末尾添上一个空的标签(块级元素),相当于添加一堵墙进行隔离,让其浮动效果只限于父盒子中
+          方法2:给父元素添加overflow,将其设置为hidden、auto或scroll
+          方法3:给父元素的类中添加伪元素after(相当于方法1的升级,不需要单独加个空标签)
+          方法4:给父元素的类中添加双伪元素before和after(方法4只在后面加了墙,该方法再在前面加一堵墙)
      -->
+    <style>
+        /* 方法1: */
+        /* .box {
+            width: 800px;
+            border: 1px solid blue;
+            margin: 0 auto;
+        }
+        .clear {
+            clear: both;
+        }
+        */
+
+        /* 方法2: */
+        /* .box {
+            overflow: hidden;
+            width: 800px;
+            border: 1px solid blue;
+            margin: 0 auto;
+        } */
+
+        /* 方法3: */
+        /* .box {
+            width: 800px;
+            border: 1px solid blue;
+            margin: 0 auto;
+        }
+        .clearfix:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        } */
+        /* .clearfix { */
+        /* IE6、7 专有 */
+        /* *zoom: 1; */
+        /* } */
+
+        /* 方法4: */
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        .box {
+            width: 800px;
+            border: 1px solid blue;
+            margin: 0 auto;
+        }
+
+        /* 固定JS代码 */
+        .oneFloat {
+            float: left;
+            width: 300px;
+            height: 200px;
+            background-color: purple;
+        }
+
+        .twoFloat {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .footer {
+            height: 200px;
+            background-color: black;
+        }
+
+        /* 固定JS代码 */
+    </style>
 </head>
 
 <body>
-
+    <div class="box clearfix">
+        <div class="oneFloat">浮动1</div>
+        <div class="twoFloat">浮动2</div>
+        <!-- 使用span没有效果,因为不能使用行内元素进行隔离,需要使用块级元素 -->
+        <!-- <span class="clear"></span> -->
+        <!-- <div class="clear"></div> -->
+    </div>
+    <div class="footer"></div>
 </body>
 
 </html>
