@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20-BOM之this指向问题</title>
+</head>
+
+<body>
+    <button>方法调用</button>
+</body>
+<script>
+    // 1.全局作用域或普通函数中this指向全局对象window
+    console.log(this);  // 打印Window
+    function fn() {
+        console.log(this);
+    }
+    fn()  // 打印Window(完整代码应该是window.fn(),所以this是window,包括setInterval也是这个道理)
+
+    // 2.方法调用中谁调用this,this就指向谁
+    var o = {
+        sayHi: function () {
+            console.log(this);
+        }
+    }
+    o.sayHi()  // 打印{sayHi: ƒ},表示this指向o
+
+    var btn = document.querySelector('button')
+    btn.onclick = function () {
+        console.log(this);  // 点击按钮后打印<button>方法调用</button>
+    }
+
+    // 3.构造函数中this指向构造函数的实例
+    function Fun() {
+        console.log(this);  // 打印Fun{}
+    }
+    var fun = new Fun()  // 尽管Fun是一个函数不是一个类,但是加上了new后,会开辟一个空间创建一个空对象,fun再去指向该对象
+
+</script>
+
+</html>

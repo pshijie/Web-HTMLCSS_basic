@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22-BOM之location对象</title>
+    <script>
+        // 1.window对象提供一个location属性用于获取或设置窗体的URL,并且可用于解析URL,该属性返回一个对象,所以将该属性称为location对象
+        // 2.URL:
+        //      格式:protocol://host[:port]/path/[?query]#fragment,如http://www.baidu.cn/index.html?name=psj&age=100#link
+        //      组成说明:
+        //          protocol:通信协议
+        //          host:主机(域名)
+        //          port:端口(可选)
+        //          path:表示主机上的一个目录或文件地址
+        //          query:参数,以&分隔
+        //          fragment:锚点链接
+        // 3.创建方法:
+        //      ① assign:跳转到指定页面(记录浏览历史,可以回退页面)
+        //      ② replace:替换当前页面(不可以回退页面)
+        //      ③ reload:重新加载页面(括号内不写参数就是普通刷新,写上true就是强制刷新)
+        // tips:普通刷新会先读取本地缓存,而强制刷新会直接从服务器读取数据
+    </script>
+</head>
+
+<body>
+    <button>跳转到指定页面</button>
+</body>
+<script>
+    // 属性
+    console.log(location.href);  // 返回整个URL地址
+    console.log(location.search);  // 返回查询的参数
+
+    // 方法
+    var btn = document.querySelector('button')
+    btn.addEventListener('click', function () {
+        // location.assign('http://www.baidu.com')  // 可以点击回退按钮
+        // location.replace('http://www.baidu.com')  // 不可以点击回退按钮
+        location.reload(true)
+    })
+</script>
+
+</html>

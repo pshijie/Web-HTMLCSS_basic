@@ -162,10 +162,26 @@
 - window对象常见事件：
   - onload
   - onresize
-- 定时器：
+- 定时器:exclamation:：
   - setTimeout
   - clearTimeout
   - setInterval
   - clearInterval
   - 什么是回调函数
+
+- this执行问题：
+  - 全局作用域或普通函数中
+  - 方法中
+  - 构造函数中
+- JS执行机制:exclamation:：
+  - 同步任务
+  - 异步任务
+  - 执行栈
+  - 任务队列
+
+- location对象：
+  - 什么是location对象
+  - URL的组成
+  - 属性
+  - 方法
 

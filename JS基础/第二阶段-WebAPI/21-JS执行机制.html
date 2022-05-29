@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21-JS执行机制</title>
+    <script>
+        //  1.JS是单线程，这就导致如果JS执行时间过长会造成页面渲染不连贯
+        //  2.H5允许JS创建多个线程,所以出现了同步和异步
+        //  3.JS任务分为同步任务和异步任务:
+        //   ① 同步任务:都在主线程上执行,形成一个执行栈
+        //   ② 异步任务:通过回调函数实现,如click、resize、load、error、setInterval和setTimeout等
+        //              异步任务会将回调函数添加到任务队列(消息队列)中
+        //  4.JS执行机制:
+        //   ① 先执行执行栈(主车道)中的同步任务
+        //   ② 将回调函数放到任务队列(应急车道)中
+        //   ③ 执行栈中的所有同步任务执行完后,系统按次数读取任务队列中的异步任务;被读取的异步任务结束等待,进入执行栈执行
+        //  5.事件循环:执行栈会不停的查询任务队列,任务队列有异步任务就拿出来执行
+        //  6.总体流程:
+        //                            有异步任务时,提交给对应的异步处理进程
+        // 开始-------------> 执行栈-------------------------------------------> WebAPI(异步API):1.ajax(网络模块) 2.DOM事件(DOM模块)
+        //                      \                                                   /           3.setTimeout、setInterval(time模块)
+        //                       \1.主线程执行完毕,查询任务队列,                     /
+        //                        \   取出一个任务推入主线程处理                    /异步任务完毕,推入任务队列中
+        //                         \2.重复该动作                                  /
+        //                          \                                           /
+        //                            --- >           任务队列:           <----
+        //                                          队列1:onload等
+        //                                          队列2:setTimeout等...
+    </script>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 下面代码打印顺序step1->step3->step2(体现出异步)
+    // console.log("step1");
+
+    // setTimeout(function () {
+    //     console.log("step2");
+    // }, 1000)
+    // console.log("step3");
+
+    // 下面代码打印顺序step1->step3->step2,都把等待时间设置为0S后为什么还是先打印step3?
+    // 执行栈:
+    //
+    //          console.log("step1");
+    //          setTimeout(fn,0);
+    //          console.log("step3");
+    // 任务队列: function () {console.log("step2");}
+    // console.log("step1");
+
+    // setTimeout(function () {
+    //     console.log("step2");
+    // }, 0)
+    // console.log("step3");
+
+    // 下面代码执行顺序:step1->step3->(等待3S)step4-wait->(如果点击页面)step2-click
+    // setTimeout会在3S后才加入到任务队列,onclick也需要点击触发后才会加入任务队列
+    // 在未点击页面时,执行栈中同步任务全部执行完毕,但是在任务队列的onclick在点击后依旧还是进入到执行栈中执行
+    console.log("step1");
+    document.onclick = function () {
+        console.log('step2-click');
+    }
+    console.log('step3');
+    setTimeout(function () {
+        console.log('step4-wait')
+    }, 3000)
+</script>
+
+</html>
