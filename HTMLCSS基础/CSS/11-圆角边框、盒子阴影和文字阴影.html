@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-圆角边框、盒子阴影和文字阴影</title>
+    <style>
+        .roundBorder {
+            width: 300px;
+            height: 150px;
+            background-color: pink;
+            /**
+            1.值越大,弧度越大
+            2.使用百分比:如果该div是一个正方形,此时设置为50%就会将该div变为一个圆形;如果该div是长方形,设置为50%后就变为圆角矩形
+            3.使用四个值:把div的四个角分别设置不同的弧度
+            **/
+            /* border-radius: 10px; */
+            /* border-radius: 50%; */
+            border-radius: 10px 20px 30px 40px;
+        }
+
+        .borderShadow {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 100px auto;
+            /**
+            1.分别表示水平阴影位置、垂直阴影位置、模糊距离(值越大阴影越模糊)、阴影大小、阴影颜色,是否为内阴影(不写该属性就是外阴影,如果写了该单词会报错)
+            2.阴影不占用空间
+            **/
+            box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.3) inset;
+        }
+
+        .textShadow {
+            font-size: 50px;
+            color: orangered;
+            font-weight: 700;
+            /* 分别表示水平阴影位置、垂直阴影位置、模糊距离(值越大阴影越模糊)、阴影颜色*/
+            text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="roundBorder">圆角边框</div>
+    <div class="borderShadow">盒子阴影</div>
+    <div class="textShadow">文字阴影</div>
+</body>
+
+</html>

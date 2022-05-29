@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14-DOM之事件对象</title>
+    <style>
+        .father {
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            background-color: pink;
+            text-align: center;
+        }
+
+        .son {
+            width: 200px;
+            height: 200px;
+            margin: 50px;
+            background-color: purple;
+            line-height: 200px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="old">事件对象概念-old</div>
+    <div class="new">事件对象概念-new</div>
+    <div class="proAndmethod">事件对象的属性和方法</div>
+    <ul>
+        <li>this和target的区别</li>
+    </ul>
+
+    <a href="https://www.baidu.com">阻止默认行为-链接不跳转</a>
+    <form action="https://www.baidu.com">
+        <input type="submit" value="阻止默认行为-提交按钮不提交" name="sub">
+    </form>
+
+    <div class="father">
+        <div class="son">阻止冒泡</div>
+    </div>
+</body>
+<script>
+    // Ⅰ、什么是事件对象
+    var div_old = document.querySelector('.old')
+    // 1.event就是事件对象
+    // 2.事件对象只有有事件才会存在,它是系统自动创建,不需要传递参数
+    // 3.事件对象是事件一系列相关数据的集合,它和事件相关,比如鼠标点击事件对象中包含鼠标的相关信息(属性和方法),如鼠标的坐标等
+    // 4.事件对象不一定要命名为event,可以是任意名称
+    div_old.onclick = function (event) {
+        console.log(event);
+    }
+
+    var div_new = document.querySelector('.new')
+    div_new.addEventListener('click', function (event) {
+        console.log(event);
+    })
+
+    // Ⅱ、常见事件对象属性和方法
+    var div_proAndmethod = document.querySelector('.proAndmethod')
+    div_proAndmethod.addEventListener('click', function (e) {
+        console.log(e.target);  // target返回触发事件的元素:<div class="proAndmethod">事件对象的属性和方法</div>
+        console.log(e.type);  // type返回事件类型:click
+    })
+    var ul = document.querySelector('ul')
+    ul.addEventListener('click', function (e) {
+        console.log(this);  // this返回绑定事件的对象:<ul><li>this和target的区别</li></ul>
+        console.log(e.target);  // target返回触发事件的元素:<li>this和target的区别</li>
+    })
+
+    var a = document.querySelector('a')
+    a.addEventListener('click', function (e) {
+        e.preventDefault()  // preventDefault()阻止默认行为:让链接不跳转
+    })
+    var form = document.querySelector('form')
+    form.addEventListener('click', function (e) {
+        e.preventDefault()  // preventDefault()阻止默认行为:让提交按钮不提交
+    })
+
+    var son = document.querySelector('.son');
+    son.addEventListener('click', function (e) {
+        alert('son');
+        e.stopPropagation(); // stopPropagation()阻止冒泡:点击'阻止冒泡'后只弹出'son'
+    }, false);
+    var father = document.querySelector('.father');
+    father.addEventListener('click', function () {
+        alert('father');  // 由于没有阻止class='father'的div进行冒泡,所以点击该div还是会依次弹出'father'和'document'
+    }, false);
+    document.addEventListener('click', function () {
+        alert('document');
+    })
+
+    // Ⅲ、鼠标事件对象常见属性
+    document.addEventListener('click', function (e) {
+        console.log(e.clientX);  // 鼠标在可视区的x坐标
+        console.log(e.clientY);  // 鼠标在可视区的x坐标
+        console.log(e.pageX);  // 鼠标在页面文档的x坐标(当页面很大需要拉动左右滚动条时,可以使用该属性获得当前位置距离未滚动前最左侧的距离)
+        console.log(e.pageY);  // 鼠标在页面文档的Y坐标(当页面很大需要拉动上下滚动条时,可以使用该属性获得当前位置距离未滚动前顶部的距离)
+        console.log(e.screenX);  // 鼠标在电脑屏幕的x坐标
+        console.log(e.screenY);  // 鼠标在电脑屏幕的y坐标
+    })
+    // Ⅳ、键盘事件及常见对象属性
+    document.addEventListener('keyup', function () {
+        console.log('key up');
+    })
+    document.addEventListener('keydown', function () {
+        console.log('key down');  // 按下一个键是keydown先触发,keypress后触发
+    })
+    document.addEventListener('keypress', function () {
+        console.log('key press');  // 和keydown都表示在按键按下时触发，但区别在于它不识别功能键,如ctrl、shift以及箭头等
+    })
+
+    document.addEventListener('keypress', function (e) {
+        console.log(e.keyCode);  // keyup和keydown事件不区分大小写,所以按下a和A后得到的值都为65,而keypress区分,按下a后此时输出的值为97
+        if (e.keyCode === 97) {
+            alert('按下a')
+        } else {
+            alert('没按下a')
+        }
+    })
+
+</script>
+
+</html>

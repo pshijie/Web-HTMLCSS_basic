@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-运算符</title>
+    <script>
+        // 1.浮点运算会存在精度问题
+        console.log(0.1 + 0.2)  // 输出0.30000000000000004
+        console.log(0.1 == 0.2)  // 输出false(不要判断两个浮点数是否相等)
+        // 2.使用==比较数值型和字符型时会出现相等的情况(隐式转换)
+        console.log(12 == '12')  // 输出true
+        console.log(12 === '12')  // 输出false,===要求值和类型都一样(不等于为!==)
+        // 3.逻辑与中如果表达式1为真则返回表达式2,否则返回表达式1
+        console.log(123 && 456)  // 输出456
+        // 4.逻辑或中如果表达式1为真则返回表达式1,否则返回表达式2
+        console.log(123 || 456)  // 输出123
+
+        // tips:空或者否定都认为是假，其余的认为是真,比如0 '' null undefined Nan
+        console.log(null || 123)  // 输出123
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

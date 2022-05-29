@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子模型</title>
+    <!-- 盒子模型(像div、table等块级元素)的组成:
+            1.边框border:盒子的大小是包括边框的粗细值的
+            2.内容content
+            3.内边距padding:边框和内容之间的距离,盒子的大小是包括内边距的
+            4.外边距margin:盒子和盒子之间的距离
+            对于border、padding和margin都有四个方向的数值设置 -->
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            /* 边框可以设置三个属性:
+                    1.border-width:边框粗细
+                    2.border-style:边框样式,其中solid为实线,dashed为虚线,dotted为点线
+                    3.border-color:边框颜色 */
+            border-width: 5px;
+            border-style: dashed;
+            border-color: aquamarine;
+            /* 这三个属性可以复写,并且没有顺序要求
+                对于四个方向可以单独设置 */
+            /* border: 5px dashed aquamarine; */
+            border-top: 5px dotted darkblue;
+
+        }
+
+        table,
+        td {
+            border: 1px solid pink;
+            /* 如果给每个td设置边框,此时会明显看出每个td的边框变粗了，
+                因为相邻的边框(前提是cellspacing="0")粗细值会叠加加在一起,所以为了显示正常粗细,需要将相邻边框进行合并 */
+            border-collapse: collapse;
+        }
+
+        .padding {
+            width: 200px;
+            height: 200px;
+            border-color: pink;
+            /* 内边距同样可以设置四个方向 */
+            padding-left: 20px;
+            padding-top: 20px;
+            /* 内边距的复合属性有四种情况:
+                    1.padding:10px表示四个方向的为10px
+                    2.padding:10px 5px表示上下的为10px,左右的为5px
+                    3.padding:10px 5px 20px表示上的为10px,左右的为5px,下的为20px
+                    4.padding:10px 5px 20px 15px表示上右下左为10、5、20、15px */
+            /* padding: 30px 20px; */
+
+            /* 如果盒子没有指定width和height属性,此时padding不会撑开盒子 */
+        }
+
+        .margin {
+            width: 200px;
+            height: 200px;
+            /* 外边距同样可以设置四个方向,设置的外边距也属于盒子模型的一部分
+               复合属性和padding一致 */
+            /* 将左右外边距设置为auto可以让块级盒子水平居中,即让该盒子在当前行显示在之间,但是必须给盒子设置宽度
+               如果要给行内/行内块元素水平居中,则在父元素设置text-align=center*/
+            margin: 20px auto;
+        }
+
+        .marginCenter {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            /* 如果只给块级盒子设置水平居中,其子元素的内容是不会居中的 */
+            text-align: center;
+
+        }
+
+        .delete{
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>边框属性设置</div>
+    <table cellspacing="0">
+        <thead>
+            <caption>边框合并</caption>
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>psj</td>
+            <td>男</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>psw</td>
+            <td>男</td>
+            <td>100</td>
+        </tr>
+    </table>
+
+    <div class="padding">内边距设置</div>
+    <div class="margin">外边距设置</div>
+    <div class="marginCenter">
+        <p>行内元素设置水平居中</p>
+    </div>
+
+    <ul class="delete">
+        <li>清除内外边距</li>
+    </ul>
+</body>
+
+</html>

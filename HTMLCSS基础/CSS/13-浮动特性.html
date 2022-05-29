@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-浮动特性</title>
+    <!--
+        浮动特性:任何元素都可以浮动
+        ① 浮动元素会脱离标准流(脱标):不再保留原来的位置(即浮动框不再按照元素定义的顺序排列),并且不再固定(相当于新开了一个图层)
+        ② 浮动元素会一行内显示并且元素顶部对齐
+        ③ 浮动元素会具有行内块元素特性(块元素也会变为行内块元素)
+
+        浮动使用:为了约束浮动位置(即每次不要都浮动到窗口的最左/右端),先用标准流的父元素排列上下位置,内部的子元素采用浮动排列左右位置
+                 可以理解为将浮动元素框在一个固定范围内
+    -->
+    <style>
+        /* 特性① */
+        /* div {
+            width: 150px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .tuobiao {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            float: left;
+        } */
+
+        /* 特性② */
+        /* div {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .one {
+            background-color: purple;
+            height: 249px;
+        }
+
+        .two {
+            background-color: skyblue;
+        } */
+
+        /* 特性③ */
+        span {
+            /**如果不加上浮动,由于span是行内元素,是没有宽高的,即使设置了宽高也是无法显示的span元素的(span中没有文本内容的前提下)**/
+            float: left;
+            width: 100px;
+            height: 200px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 特性①演示 -->
+    <!-- <div class="tuobiao">1.脱标演示</div> -->
+    <!--此时该div浮动在标准流div上方,相当于新开了图层-->
+    <!-- <div>标准流</div> -->
+
+    <!-- 特性②演示 -->
+    <!-- <div class="one">2.会在一行显示且顶部对齐</div> -->
+    <!-- <div class="two">2.会在一行显示且顶部对齐</div> -->
+
+    <!-- 特性③演示 -->
+    <span>3.具有行内块元素特性</span>
+</body>
+
+</html>

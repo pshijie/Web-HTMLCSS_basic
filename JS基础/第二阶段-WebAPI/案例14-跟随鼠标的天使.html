@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例14-跟随鼠标的天使</title>
+    <style>
+        img {
+            position: absolute;
+            top: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/angel.gif" alt="">
+</body>
+<script>
+    var pic = document.querySelector('img')
+    document.addEventListener('mousemove', function (e) {
+        // 每次移动鼠标就会获得最新鼠标坐标x和y,把x和y作为图片的top和left
+        var x = e.pageX
+        var y = e.pageY
+        // 一定要添加单位px
+        // 50和40是为了让图片在鼠标位置中部
+        pic.style.left = x - 50 + 'px'
+        pic.style.top = y - 40 + 'px'
+    })
+</script>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-DOM之操作元素</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .pChange {
+            background-color: red;
+            color: #fff;
+            font-size: 25px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">显示当前系统时间1</button>
+    <button id="btn2">显示当前系统时间2</button>
+    <div>某个时间</div>
+
+    <button id="btn3">更新图片</button>
+    <img src="img/color1.png" alt="#"><br>
+
+    <button id="btn4">修改表单</button>
+    <input type="text" value="输入内容">
+
+    <div id="div1">修改样式属性1</div>
+    <p>修改样式属性2</p>
+
+    <div id="div2">获取元素属性值</div>
+    <div id="div3" index="myAttr" data-index="111" data-list-name="222">自定义属性</div>
+</body>
+<script>
+    // 1.改变元素内容
+    var btn1 = document.getElementById('btn1')
+    var btn2 = document.getElementById('btn2')
+    var div = document.querySelector('div')
+    btn1.onclick = function () {
+        div.innerHTML = "<strong>20220513</strong>"  // 可以实现加粗效果，即会识别元素标签(会保留空格和换行)
+    }
+    btn2.onclick = function () {
+        div.innerText = "<strong>20220513</strong>"  // 不会实现加粗效果,直接输出<strong>20220513</strong>(不保留空格和换行)
+    }
+
+    // 2.改变普通元素属性
+    var btn3 = document.getElementById('btn3')
+    var img = document.querySelector('img')
+    btn3.onclick = function () {
+        img.src = 'img/color2.png'
+    }
+
+    // 3.改变表单元素的属性
+    var btn4 = document.getElementById('btn4')
+    var input = document.querySelector('input')
+    btn4.onclick = function () {
+        input.value = '表单内容被修改'  // 不是通过innerHtml修改
+        this.disabled = true  // this表示该函数的调用者btn4,点击后该按钮被禁用
+    }
+
+    // 4.改变样式中的属性
+    // 4.1 行内样式操作(修改样式后产生的是行内样式)
+    var div1 = document.getElementById('div1')
+    div1.onclick = function () {
+        this.style.backgroundColor = 'yellow'  // 属性采取驼峰命名法
+    }
+    // 4.2 类名样式操作*
+    var p = document.querySelector('p')
+    p.onclick = function () {
+        this.className = 'pChange'  // 将p的类名改为div2Change,如果原来类名为org,则会被覆盖,要同时使用两个类名可以写为'org pChange'
+    }
+
+    // 5.自定义属性操作
+    // 5.1 获取元素属性值
+    var div2 = document.querySelector('#div2')
+    console.log(div2.id);  // 通过element.属性获取属性。该方法只能获取元素内置的属性
+    console.log(div2.getAttribute('id'));  // 通过getAttribute(属性)获取属性。该方法只能获取自定义的属性
+    // 5.2 自定义属性
+    var div3 = document.querySelector('#div3')
+    console.log(div3.getAttribute('index'));
+
+    // 5.2.1 H5的自定义属性(以'data-'开头，不过只是一个规范而已)
+    console.log(div3.getAttribute('data-index'));
+    // H5获取以'data-'开头属性的方式
+    console.log(div3.dataset.index);
+    console.log(div3.dataset['index']);
+    console.log(div3.dataset.listName);  // 需要将属性名data-list-name改为驼峰命名法
+    console.log(div3.dataset['listName']);
+
+    // 5.3 设置属性值
+    div2.id = "change"  // 注意:如果修改或者获取元素的class属性,使用该方法需要写为element.className,不是element.class
+    console.log(div2.id);
+    div3.setAttribute("index", "myAttr2")  // 注意:如果修改或者获取元素的class属性,使用该方法写为class即可,无需写为className
+    console.log(div3.getAttribute('index'));
+    // 5.4 移除属性
+    div3.removeAttribute('index')
+    console.log(div3.getAttribute('index'));
+</script>
+
+</html>

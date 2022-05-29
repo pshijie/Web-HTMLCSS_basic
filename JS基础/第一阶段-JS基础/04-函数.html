@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-函数</title>
+    <script>
+        // 1.当函数没有return值时，调用该函数返回undefined
+        function returnUndefined() {
+
+        }
+        console.log(returnUndefined())  // 返回undefined
+
+        // 2.函数要返回多个值，需要将所有结果放到数组中，不能像python一样直接返回多个
+        function returnMore() {
+            // return 1,2,3  // 只会返回3
+            return [1, 2, 3]  // 返回[1,2,3]
+        }
+        console.log(returnMore())
+
+        // 3.使用内置对象arguments
+        function useArguments() {
+            console.log(arguments)
+            console.log(arguments.length)  // 3
+            console.log(arguments[0])   // 1
+        }
+        useArguments(1, 2, 3)  // 即使函数没有形参，直接传递实参也可，打印[1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+
+        // tips:
+        //      1.内置对象arguments是一个伪数组，具有以下特性：
+        //        ①具有length属性
+        //        ②按照索引方式存储
+        //        ③没有数组的一些方法如pop、push等
+
+        // 4.函数的另一种声明方式
+        var fun = function () {
+            console.log('另一种声明方式')
+        }
+        fun() // fun是变量名不是函数名，该函数是一个匿名函数
+
+        // tips:js没有块级作用域(但是局部变量还是只能在函数中使用，不能在外部使用)
+        if (1 < 2) {
+            var num = 10
+        }
+        console.log(num)  // 尽管num是在代码块中声明，但是依旧在外部可以使用(java不行)
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

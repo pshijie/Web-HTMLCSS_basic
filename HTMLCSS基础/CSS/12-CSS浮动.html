@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-CSS浮动</title>
+    <!--
+        1.网页布局的本质:使用CSS摆放盒子,把盒子摆到正确的位置
+        2.传统布局的三种方式:
+            ①普通流(标准流/文档流):标签(分为块级、行内、行内块)按照默认方式排列,比如
+                块级元素独占一行,从上到下顺序排列
+                行内元素从左到右排列,碰到父元素边缘就自动换行
+            ②浮动
+            ③定位
+
+        3.浮动的作用:
+        之前学习的是普通流,那么要实现以下几个要求:
+        Ⅰ.如何让多个div在一行中排列?将div元素转为行内块元素,但是每个div之间会有空隙
+        Ⅱ.如何让两个div在同一行的最左端和最右端?之前方式无法实现
+
+        4.浮动和标准流的应用场景:多个块级元素纵向排列使用标准流,多个块级元素横向排列使用浮动
+
+        5.float属性:创建浮动框,将其移动到一边(left or right),直到移动到当前行的左/右边缘或者包含块/另一个浮动框的边缘
+          在问题1中两个浮动框就浮动到三个行内块的左边缘去了,并且停留在问题2的左侧浮动框的右边缘
+
+     -->
+    <style>
+        .inline-block {
+            display: inline-block;
+            width: 150px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .float-block {
+            width: 150px;
+            height: 200px;
+            background-color: blue;
+            float: left;
+        }
+
+        .left-float {
+            width: 150px;
+            height: 200px;
+            background-color: red;
+            float: left;
+        }
+
+        .right-float {
+            width: 150px;
+            height: 200px;
+            background-color: orange;
+            float: right;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="left-float">浮动解决问题2</div>
+    <div class="inline-block">块级->行内块1(存在间隙)</div>
+    <div class="inline-block">块级->行内块2(存在间隙)</div>
+    <div class="inline-block">块级->行内块3(存在间隙)</div>
+    <div class="float-block">浮动解决问题1a</div>
+    <div class="float-block">浮动解决问题1b</div>
+    <div class="float-block">浮动解决问题1c</div>
+    <div class="right-float">浮动解决问题2</div>
+
+</body>
+
+</html>

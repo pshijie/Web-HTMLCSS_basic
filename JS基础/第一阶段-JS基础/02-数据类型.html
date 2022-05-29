@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-数据类型</title>
+    <script>
+        // 1.JS引擎根据等号右边的值判断变量的数据类型(弱语言/动态语言)
+        var num = 10;  // 此时num为数字类型
+
+        // 2.JS中变量的数据类型可以变化
+        var change = 10;
+        var change = 'change to str';
+        console.log(change)
+
+        // 3.数据类型分类
+        var typeTest = null
+        console.log(typeof typeTest)  // typeof可以检测变量类型
+
+        //      3.1 简单数据类型: Number String Boolean Undefined Null
+        //          Number:数字型，包含整型值和浮点型值，默认值为0
+        console.log(isNaN(111));  // 判断是否为非数字
+        //          Boolean:布尔型，包含true和false，默认值为false
+        console.log(false - 2.5)  // 参与运算时将true视为1,false视为0
+        //          String:字符串类型，默认值为""
+        console.log("字符串'String'嵌套");
+        //          Undefined:声明了变量但没有赋值，默认值为undefined
+        var varUndefined;
+        console.log(varUndefined + 'psj');  // 和字符串相加视为字符串的拼接
+        console.log(varUndefined + 1);  // 和数字相加输出NaN
+        //          Null:声明变量为空值，默认值为null
+        var varNull = null;
+        console.log(varNull + 'psj')  // 和字符串相加视为字符串的拼接
+        console.log(varNull + 1)  // 和数字相加输出还是数字
+
+        //      3.2 复杂数据类型: Object
+
+        // 注意:①null属于object类型 ②从prompt中取出的值为字符型
+
+        // 4.数据类型转换
+        //      4.1 转换为字符串:
+        //          xxx.toString()
+        //          String(xxx)
+        //          字符串拼接(隐式转换)
+        var changeStr = 10
+        console.log(changeStr + '')
+        //      4.2 转换为数字型:
+        //          parseInt(xxx)/parseFloat(xxx)
+        console.log(parseFloat('120px'))  // 输出120,即把px自动删除，但是如果为px120px就不能把前面的字符也删除,此时输出NaN
+        //          Number(xxx)
+        //          利用算数运算(隐式转换)
+        console.log(10 - '2')  // '2'-10也可以计算
+        //      4.3 转换为布尔型
+        //          Boolean(xxx):''、0、NaN、null和undefined都会被转换为false，其余的被转换为true
+        console.log(Boolean(''))
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

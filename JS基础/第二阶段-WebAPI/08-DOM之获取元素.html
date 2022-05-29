@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-DOM之获取元素</title>
+    <script>
+        // 因为页面从上到下加载，所以需要执行的script需要写在页面标签下面
+    </script>
+</head>
+
+<body>
+    <div id="id1">根据ID获取元素</div>
+    <ul>
+        <li>根据标签名获取元素1</li>
+        <li>根据标签名获取元素2</li>
+    </ul>
+    <ol>
+        <li>根据标签名获取元素3</li>
+        <li>根据标签名获取元素4</li>
+    </ol>
+    <ol>
+        <li>根据标签名获取元素5</li>
+        <li>根据标签名获取元素6</li>
+    </ol>
+    <div class="class1">根据类名获取(H5新增)</div>
+    <div class="class2">根据选择器获取-class(H5新增)</div>
+    <div id="id2">根据选择器获取-Id(H5新增)</div>
+    <p></p>
+    <script>
+        // 1.根据ID获取
+        var byId = document.getElementById("id1")
+        console.log(byId);  // 返回的是元素对象:< div id = "id1" > 根据ID获取元素</ div>
+
+        // 2.根据标签名获取(不管页面中有没有该标签，都会返回一个伪数组)
+        var byTag = document.getElementsByTagName("li")
+        console.log(byTag);  // 返回元素对象的集合(以伪数组的形式存储):HTMLCollection(2) [li, li]
+        console.log(byTag[0]);  // 返回的是元素对象:<li>根据标签名获取元素1</li>
+        // 可以通过父元素获取指定标签名的子元素
+        var ol = document.getElementsByTagName("ol")
+        console.log(ol[1].getElementsByTagName("li")[0]);  // 返回的是元素对象:<li>根据标签名获取元素5</li>
+
+        // 3.根据类名获取(H5新增)
+        var byClass = document.getElementsByClassName("class1")
+        console.log(byClass);  // 返回元素对象的集合(以伪数组的形式存储):HTMLCollection [div.class]
+
+        // 4.直接根据选择器(选择器包括ID、类名、标签名，querySelector只返回选择器的第一个元素对象,querySelectorAll返回选择器的所有元素对象)
+        var bySelect1 = document.querySelector('.class2')
+        console.log(bySelect1);  // 返回的是元素对象:<div div class="class2" > 根据选择器获取(H5新增)</div >
+        var bySelect2 = document.querySelector('#id2')
+        console.log(bySelect2);  // 返回的是元素对象:<div id="id2">根据选择器获取-Id(H5新增)</div>
+        var bySelect3 = document.querySelectorAll("li")
+        console.log(bySelect3);  // 返回的是元素集合对象:NodeList(6) [li, li, li, li, li, li]
+
+        // 5.获取特殊元素
+        var bodyEle = document.body  // 获取body元素
+        console.log(bodyEle);
+        var htmlEle = document.documentElement  // 获取html元素
+        console.log(htmlEle);
+    </script>
+</body>
+
+</html>

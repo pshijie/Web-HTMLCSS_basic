@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18-BOM之window对象常见事件</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+    <!--
+        1.window.onload:窗口加载事件,当文档内容完全加载后会触发该事件(这样JS代码不需要写在定义DOM元素代码的下方保证被触发)
+        注:如果页面中图片很多,因为需要等全部内容加载完后才会执行JS代码,所以会影响用户体验,
+           可以使用document.addEventListener('DOMContentLoaded'，function(){...}),该事件等DOM加载完毕即可触发,不需要等CSS、图片、flash等加载完毕
+        2.window.onresize:调整窗口大小事件,当窗口大小改变后会触发该事件
+     -->
+</head>
+
+<body>
+    <script>
+
+        // 因为button还未加载就执行该点击事件,所以不会弹出对话框
+        // var btn = document.querySelector('button')
+        // btn.addEventListener('click', function () {
+        //     alert("无法弹出!")
+        // })
+
+        // 下面代码等文档内容全部加载完后才执行, 所以会弹出对话框
+        // window.onload传统注册事件方式:只能写一次,如果有多个时会以最后一个传统的window.onload为准
+        // window.onload = function () {
+        //     var btn = document.querySelector('button')
+        //     btn.addEventListener('click', function () {
+        //         alert("window.onload传统注册事件方式")
+        //     })
+        // }
+
+        // window.onload常见注册事件方式:可以写多个,并且都会执行
+        // window.addEventListener('load', function () {
+        //     var btn = document.querySelector('button')
+        //     btn.addEventListener('click', function () {
+        //         alert("window.onload常见注册事件方式1")
+        //     })
+        // })
+        // window.addEventListener('load', function () {
+        //     var btn = document.querySelector('button')
+        //     btn.addEventListener('click', function () {
+        //         alert("window.onload常见注册事件方式2")
+        //     })
+        // })
+        // window.addEventListener('load', function () {
+        //     alert('比DOMContentLoaded慢执行')
+        // })
+        // ------------------------------------------------------------
+
+        // 下面代码只要等DOM加载完毕即可执行
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     alert('最先执行')
+        // })
+        // ------------------------------------------------------------
+
+        // -----------当窗口宽度小于1800px时就将div隐藏，否则就显示-------------------
+        // 需要使用load等文档内容加载完毕在执行该JS才会成功
+        window.addEventListener('load', function () {
+            var div = document.querySelector('div')
+            window.addEventListener('resize', function () {
+                // console.log('窗口大小发生变化');
+                if (window.innerWidth <= 1800) {
+                    div.style.display = 'none'
+                } else {
+                    div.style.display = 'block'
+                }
+            })
+        })
+
+        // -------------------------------------------------------------
+
+    </script>
+    <button>点击</button>
+    <div></div>
+</body>
+
+</html>

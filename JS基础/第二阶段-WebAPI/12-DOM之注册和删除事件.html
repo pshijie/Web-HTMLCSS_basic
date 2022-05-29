@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-DOM之注册和删除事件</title>
+    <script>
+        // 注册(绑定)事件有两种方式:传统方式和方法监听注册方式
+        // 1.传统方式:
+        //      ①以on开头,如onclick
+        //      ②同一个元素同一个事件只能设置一个处理函数,最后注册的处理函数会覆盖之前注册的函数
+        // 2.方法监听注册方式:
+        //      ①使用addEventListener(type, func)方法(IE9之前使用attachEvent()方法)
+        //             type:字符串,表示事件类型,不需要加上on,但是要加引号
+        //             func:事件处理程序(监听器)
+        //      ②同一个元素同一个事件可以注册多个监听器,并且按照注册顺序依次执行
+
+        // 删除(解绑)事件有两种方式:传统方式
+    </script>
+</head>
+
+<body>
+    <button class="org_add">传统方式注册事件</button>
+    <button class="new_add_IE9">方法监听方式注册事件-IE9后</button>
+    <!-- <button class="new_before_IE9">方法监听注册事件-IE9前</button> -->
+
+    <div class="org_del">传统方式删除事件</div>
+    <div class="new_del">方法监听方式删除事件</div>
+</body>
+<script>
+    var btn_org = document.querySelector('.org_add')
+    btn_org.onclick = function () {
+        console.log('org第一个处理函数');
+    }
+    btn_org.onclick = function () {
+        console.log('org第二个处理函数');  // 该函数覆盖第一个函数
+    }
+
+    var btn_new_IE9 = document.querySelector('.new_add_IE9')
+    btn_new_IE9.addEventListener('click', function () {
+        console.log('new第一个处理函数');
+    })
+    btn_new_IE9.addEventListener('click', function () {
+        console.log('new第二个处理函数');  // 该函数和上面那个函数都执行
+    })
+
+    // var btn_new_before_IE9 = document.querySelector('.new_before_IE9')
+    // btn_new_before_IE9.attachEvent('onclick', function () {
+    //     console.log('new_before_IE9第一个处理函数');
+    // })
+
+    var div_org = document.querySelector('.org_del')
+    div_org.onclick = function () {
+        console.log('org删除事件');
+        div_org.onclick = null  // 删除事件后再次点击就不会再触发事件了
+    }
+
+    var div_new = document.querySelector('.new_del')
+    div_new.addEventListener = ('click', fn)  // 不能使用匿名函数,因为removeEventListener的第二个参数需要一个函数名
+    function fn() {
+        console.log('new删除事件');
+        div_new.removeEventListener('click', fn)
+    }
+
+</script>
+
+</html>

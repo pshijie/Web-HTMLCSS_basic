@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择器</title>
+    <style>
+        /* css语法：
+                选择器 {样式}:表示给哪个选择器修改什么样式 */
+
+        /* 选择器用于根据不同需求把不同的标签选出来 */
+        /* 1.标签选择器:用HTML标签名称作为选择器 */
+        p {
+            color: red;
+            font-size: 24px;
+        }
+
+        /* 2.类选择器:
+                可以单独选择一个或者某几个标签
+                可以给一个标签设置多个多个类选择器 */
+        .classOpt1 {
+            color: black;
+        }
+
+        .classOpt2 {
+            font-size: 30px;
+        }
+        /* 3.id选择器:可以为特定id的标签指定样式 */
+        #idOpt {
+            color: aquamarine;
+        }
+        /* 4.通配符选择器:
+                表示选取页面中所有元素
+                不需要调用 */
+        *{
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>标签选择器</p>
+    <p class="classOpt1 classopt2">类选择器1</p>
+    <p class="classOpt1">类选择器2</p>
+    <p id="idOpt">id选择器</p>
+</body>
+
+</html>

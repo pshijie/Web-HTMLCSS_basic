@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS三大特性</title>
+    <style>
+        /* 1.层叠性:给相同选择器设置相同的样式不同的值，此时一个样式值就会覆盖另一个样式值
+            选择的原则是哪个样式离选择器近就选择哪个 */
+        /* div {
+            color: aqua;
+        }
+
+        div {
+            color: pink;
+        } */
+
+        /* 2.继承性:子标签会继承父标签的某些样式，如文本颜色和字号(text-、font-、line-开头的以及color属性可以继承)
+                    注意:行高也是可以继承的*/
+        /* body { */
+        /* font的复合写法为font:font-size/line-weight，所以1.5正常理解是line-weight:1.5px,但是这里是1.5倍
+                即如果子元素定义了font-size:num px,则子元素实际的line-weight为num*1.5
+                注意:如果直接写font: 12px/2是不会生效的 */
+        /* font: 12px/2 'Microsoft YaHei'; */
+        /* } */
+
+        /* div { */
+        /* color: pink; */
+        /* 此时div的行高为18*2=36px */
+        /* font-size: 18px; */
+        /* } */
+
+        /* 3.优先级:!important > 行内样式 > ID选择器 > 类/伪类选择器 > 元素选择器 > 继承
+                    可以记为!important=无穷大  行内样式=1 0 0 0  ID选择器=0 1 0 0  类/伪类选择器=0 0 1 0  元素选择器=0 0 0 1 继承=0 0 0 0 */
+        div {
+            color: red;
+        }
+
+        .testClass {
+            color: aqua;
+        }
+
+        #testID {
+            color: bisque;
+        }
+
+        .testImpotant {
+            color: blue !important;
+        }
+
+        /* 4.权重的叠加:如下面样式中.nav li > ul li
+                        因为.nav li=0 0 1 0 + 0 0 0 1=0 0 1 1,ul li=0 0 0 1 + 0 0 0 1 = 0 0 0 2
+                        注意:不管父元素权重多大,子元素继承的权重都为0*/
+        .nav li{
+            color: blueviolet;
+        }
+        ul li{
+            color: green;
+        }
+        li{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>层叠性</div>
+    <div>
+        <p>继承性</p>
+    </div>
+
+    <div class="testClass">优先级</div>
+    <div id="testID">优先级</div>
+    <div class="testImpotant" style="color: brown;">优先级</div>
+    <ul class="nav">
+        <li>权重的叠加</li>
+        <li>权重的叠加</li>
+        <li>权重的叠加</li>
+    </ul>
+</body>
+
+</html>

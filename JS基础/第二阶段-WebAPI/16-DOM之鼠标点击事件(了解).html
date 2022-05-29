@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16-DOM之鼠标点击事件(了解)</title>
+</head>
+
+<body>
+    <div>让文字不被复制</div>
+</body>
+
+<script>
+    // 1. contextmenu可以让右键弹出菜单,阻止默认行为后就不会在使用右键后弹出菜单
+    document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+    })
+    // 2. selectstart表示选中文字,阻止默认行为后就不能选中文字
+    document.addEventListener('selectstart', function (e) {
+        e.preventDefault();
+
+    })
+</script>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单小米侧边栏</title>
+    <style>
+        a {
+            display: block;
+            width: 200px;
+            height: 40px;
+            background-color: #55585a;
+            font-size: 14px;
+            color: #fff;
+            text-decoration: none;
+            /* 一般情况下是设置内边距大小实现内容距离边框的空隙,不是直接设置文字缩进 */
+            /* text-indent: 2em; */
+            padding-left: 30px;
+            /* 如何让文字在每一行中垂直居中?css没有像text-align:center(水平居中)这样的样式,所以让文字宽度等于容器宽度即可 */
+            line-height: 40px;
+        }
+
+        a:hover {
+            background-color: #ff6700;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#">手机</a>
+    <a href="#">电视</a>
+    <a href="#">笔记本</a>
+    <a href="#">出行</a>
+    <a href="#">智能</a>
+    <a href="#">健康</a>
+    <a href="#">耳机</a>
+</body>
+
+</html>

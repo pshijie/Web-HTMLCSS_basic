@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例9-tab栏切换布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .tab {
+            width: 978px;
+            margin: 100px auto;
+        }
+
+        .tab_list {
+            height: 39px;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab_list li {
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tab_list .current {
+            background-color: #c81623;
+            color: #fff;
+        }
+
+        .item_info {
+            padding: 20px 0 0 20px;
+        }
+
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价（50000）</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <!--display: block除了转变为块级元素,还可以起到显示的效果-->
+            <div class="item" style="display: block;">
+                商品介绍模块内容
+            </div>
+            <div class="item">
+                规格与包装模块内容
+            </div>
+            <div class="item">
+                售后保障模块内容
+            </div>
+            <div class="item">
+                商品评价（50000）模块内容
+            </div>
+            <div class="item">
+                手机社区模块内容
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    var tab_list = document.querySelector('.tab_list');
+    var lis = tab_list.querySelectorAll('li');
+    var items = document.querySelectorAll('.item');
+    for (var i = 0; i < lis.length; i++) {
+        // onclick是异步操作,所以在点击时才会执行其中的函数内容
+        // 而页面加载时这个js脚本已经执行,所以setAttribute会给每个lis都加上index属性,不是必须要点击一个li才会加上
+        lis[i].setAttribute('index', i)
+        lis[i].onclick = function () {
+            // 1.点击选项卡时变换底色(排它思想)
+            // 将所有li(包括自己)的class清除
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].className = '';
+            }
+            // 将自己的class置为current
+            this.className = 'current';
+
+            // 2.点击选项卡时变换内容(排它思想)
+            var index = this.getAttribute('index');
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.display = 'none';
+            }
+            items[index].style.display = 'block';
+        }
+    }
+</script>
+
+</html>

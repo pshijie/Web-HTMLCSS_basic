@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19-BOM之定时器</title>
+    <!--
+        1.window.setTimeout:设置定时器,该定时器中的函数会在到时后被调用
+            语法规范:window.setTimeout(调用函数,延迟时间(ms))
+            注意:
+                ① window可以省略
+                ② 延迟时间默认单位是ms,没写延迟时间则该函数立即执行
+                ③ 为了区分定义的多个定时器,会给定时器加上标识符(使用变量接收即可),不影响定时器的执行
+        2.回调函数:需要等待时间到了或者上件事干完后才会被调用的函数
+            注意:
+                ① setTimeout就是回调函数
+                ② element.addEventListener('click', fn)中的fn也是回调函数
+        3.window.clearTimeout:停止Timeout定时器
+            语法规范:window.clearTimeout(定时器的名称)
+            注意:
+                ① window可以省略
+        4.window.setInterval:设置定时器,该定时器中的函数每隔一段时间就被执行一次
+            注意:
+                ① window可以省略
+                ② 间隔时间默认单位是ms,没写延迟时间则该函数立即执行
+                ③ 为了区分定义的多个定时器,会给定时器加上标识符(使用变量接收即可),不影响定时器的执行
+        5.window.clearInterval:停止Interval定时器
+            语法规范:window.clearInterval(定时器的名称)
+            注意:
+                ① window可以省略
+     -->
+</head>
+
+<body>
+    <button class="timeoutStop">停止Timeout定时器</button>
+    <button class="IntervalStop">停止Interval定时器</button>
+    <script>
+        // Ⅰ、setTimeout:
+        // 1.使用匿名函数
+        // var timer1 = setTimeout(function () {
+        //     console.log('time now!');  // 2s后显示'time now!'
+        // }, 2000)
+        // 2.使用显示定义的函数名
+        function fn1() {
+            console.log('定时时间到!');
+        }
+        var timer2 = setTimeout(fn1, 2000)
+        // 3.使用显示定义的函数名+括号(不提倡)
+        // var timer3 = setTimeout('fn()', 2000)
+
+        // Ⅱ、clearTimeout:
+        var btn1 = document.querySelector('.timeoutStop')
+        btn1.addEventListener('click', function () {
+            clearTimeout(timer2)
+        })
+
+        // Ⅲ、setInterval:同样可以使用三种方式定义
+        function fn2() {
+            console.log('间隔时间到!');
+        }
+        var interval = setInterval(fn2, 1000)
+
+        // Ⅳ、clearInterval
+        var btn2 = document.querySelector('.IntervalStop')
+        btn2.addEventListener('click', function () {
+            clearInterval(interval)
+        })
+    </script>
+</body>
+
+</html>

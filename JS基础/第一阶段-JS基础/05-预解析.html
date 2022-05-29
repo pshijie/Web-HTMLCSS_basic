@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-预解析</title>
+    <script>
+        // 情况1:
+        // console.log(num)  // 不是返回undefined，而是报num is not defined
+        // 情况2:
+        console.log(num1)  // 尽管在下面定义了num,但是返回undefined
+        var num1 = 10
+        // 情况3:
+        fn1()  // 与变量不同,该函数可以被调用(和变量一样,如果没有定义fn1函数也会报错)
+        function fn1() {
+            console.log('fn1被使用')
+        }
+        // 情况4:
+        fn2()  // 与情况3不同,该函数不能被调用，会报fn2 is not a function
+        var fn2 = function () {
+            console.log("fn2被调用")
+        }
+
+        // JS运行分为:
+        //      1.预解析:JS引擎会把JS里面所有的 var 还有 function 提升到当前作用域(比如函数中的变量，是提升到当前函数的最前面而不是script的最前面)的最前面
+        //      2.代码执行:按代码从上到下的顺序执行
+
+        // 预解析分为变量预解析(变量提升)和函数预解析(函数提升)
+        //      1.变量提升:把所有变量的声明提升到当前作用域的最前面，不进行赋值操作
+        //        情况2中先将num1的声明提升到最前面，但是没有提升赋值，所以相当于执行以下代码:
+        //                                      var num1
+        //                                      console.log(num1)  // 未定义
+        //                                      num1 = 10
+        //        情况4中fn2是变量，不是函数名，所以也是进行变量提升，所以相当于执行以下代码:
+        //                                      var fn2
+        //                                      fn2()  // 没有fn2这个函数,只有fn2变量
+        //                                      fn2 = function () {
+        //                                        console.log("fn2被调用")
+        //                                      }
+        //      2.函数提升:把所有函数的声明提升到当前作用域的最前面，不调用函数
+        //        情况3中fn1是函数名，所以进行函数提升，所以相当于执行以下代码:
+        //                                      function fn1() {
+        //                                        console.log("fn1被调用")
+        //                                      }
+        //                                      fn1()
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

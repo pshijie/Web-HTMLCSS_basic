@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景属性</title>
+    <style>
+        .color {
+            width: 100px;
+            height: 100px;
+            /* 1.设置背景颜色,默认值是transparent,即透明 */
+            background-color: yellow;
+
+        }
+
+        .backimg {
+            /* 2.设置背景图片,使用起来比使用img插入图片更加方便控制位置 */
+            background-image: url(img/bg.jpg);
+            width: 200px;
+            height: 200px;
+        }
+
+        .backrepeat {
+            /* 3.设置背景平铺,盒子大小是不变的,只不过显示的背景图片如果小于盒子大小的话就会有多个图片放置在盒子中
+            具体放置的方式由no-repeat,repeat,repeat-x,repeat-y设置 */
+            background-image: url(img/bg2.png);
+            /* 背景颜色会显示在图片下方 */
+            background-color: red;
+            /* 默认是repeat */
+            background-repeat: repeat;
+            width: 500px;
+            height: 200px;
+        }
+
+        .backloc {
+            /* 4.设置背景图片位置(改变图片在背景中的位置) */
+            /* 可以设置像素值大小,也可以设置相对位置
+               background-position: center left表示x方向(下)居中,y方向(右)居左*/
+            /* background-position: 100px 100px; */
+            /* 注意:x方向只有top、center和bottom,y方向只有left、center和right
+                    如果background-position: left top,则会识别left为设置y方向,top为设置x方向
+                    如果background-position: 10px 20px,则10px一定是设置的x方向
+                    如果background-position: 10px center,则10px也一定是设置的x方向 */
+            background-position: center left;
+            background-image: url(img/bg2.png);
+            background-repeat: no-repeat;
+            width: 500px;
+            height: 200px;
+        }
+
+        body {
+            /* 5.设置背景图片固定(设置图像是否固定或者随着页面的其余部分滚动)
+                 取值有scroll和fixed*/
+            background-attachment: fixed;
+            background-image: url(img/bg.jpg);
+            background-repeat: no-repeat;
+            background-position: center top;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        /* body { */
+            /* 6.背景属性复合写法:对于属性顺序没有要求 */
+            /* background: black url(img/bg.jpg) no-repeat fixed center top; */
+        /* } */
+
+        div{
+            /* 7.设置背景颜色半透明 */
+            background: rgba(0, 0, 0, 0.5);
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="color">背景颜色</div>
+    <div class="backimg">背景图片</div>
+    <div class="backrepeat">背景平铺</div>
+    <div class="backloc">背景图片位置</div>
+    <p>背景图片固定</p>
+    <p>背景图片固定</p>
+    <p>背景图片固定</p>
+    <p>背景图片固定</p>
+    <p>背景图片固定</p>
+    <p>背景图片固定</p>
+    <p>背景图片固定</p>
+    <p>背景图片固定</p>
+    <p>背景图片固定</p>
+    <p>背景图片固定</p>
+    <p>背景图片固定</p>
+    <p>背景图片固定</p>
+    <div>背景颜色半透明</div>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 换行标签 -->
+    <br>
+    <!-- 标题标签 -->
+    <h1 id="h1Test">标题标签</h1><br>
+    <!-- 段落标签 -->
+    <p>段落标签,间距比br标签大</p><br>
+    <!-- 文本格式化标签 -->
+    <strong>加粗标签(推荐)</strong>
+    <b>也是加粗标签</b><br>
+    <em>倾斜标签(推荐)</em>
+    <i>也是倾斜标签</i><br>
+    <del>删除线(推荐)</del>
+    <s>也是删除线</s><br>
+    <ins>下划线(推荐)</ins>
+    <u>也是下划线</u><br>
+    <!-- 无语义标签:盒子，用于布局网页 -->
+    <!-- div每行的高度由标签中的内容而定,有一个p标签就一个p标签那么高 -->
+    <div>div标签是大盒子,一个div标签页面占页面的一行</div>
+    <span>span标签是小盒子,页面的一行中可以放置多个span标签</span><br>
+    <!-- 图像标签:
+            src:图片路径
+            alt:图片不显示的时候的替换文本
+            title:鼠标停住的时候显示的内容
+            width,height:图片宽高,设置一个值后另一个值会等比例缩放
+            border:边框的宽度 -->
+    <img src="./img/test.jpg" alt="test.jpg" title="img test" width="100px" border="3"><br>
+    <!-- 超链接标签
+            href:指定跳转的链接地址,#表示空链接
+            target:指定链接页面的打开方式,_blank为在新窗口中打开,_self为默认值,表示在当前窗口打开(覆盖当前页面)
+         tips:
+            1.文件、压缩包都可以写在href中，点击后可以下载
+            2.瞄点链接用于跳转到当前页面的某一个位置-->
+    <a href="https://www.baidu.com" target="_blank">普通超链接标签</a>
+    <a href="#h1Test">锚点链接</a><br>
+    <!-- 特殊字符 -->
+    <p>1&lt;2&nbsp;3</p>
+    <hr>
+    <!-- 表格标签
+            border:设置表格边框，默认无边框
+            cellspacing:设置单元格和单元格边框间的空白间距
+            cellpadding:设置单元格内容和单元格边框间的空白间距
+            align:设置表格在网页中的水平对齐方式
+            width,height:设置表格的宽高-->
+    <table border="1" align="center" cellpadding="10" cellspacing="0">
+        <thead>
+            <caption>标题</caption>
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>psj</td>
+                <td>男</td>
+                <td>100</td>
+            </tr>
+        </tbody>
+    </table>
+    <table border="1" align="center" cellpadding="10" cellspacing="0">
+        <tr>
+            <!-- 因为合并了该行的第二个单元格，使用将其删除 -->
+            <td colspan="2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td rowspan="2"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <!-- 无序、有序、自定义列表 -->
+    <ul>
+        <li>disorder1</li>
+        <li>disorder1</li>
+        <li>disorder3</li>
+    </ul>
+    <ol type="I" start="4" reversed="reversed">
+        <li>order1</li>
+        <li>order1</li>
+        <li>order3</li>
+    </ol>
+    <dl>
+        <dt>名词1</dt>
+        <dd>名词1的解释1</dd>
+        <dd>名词1的解释2</dd>
+    </dl>
+    <dl>
+        <dt>名词2</dt>
+        <dd>名词2的解释1</dd>
+        <dd>名词2的解释2</dd>
+    </dl>
+    <!-- 表单标签 -->
+    <form>
+        <!-- 1.input表单元素，属性如下:
+                type:input的类型
+                name:控件的名称,给后台人员使用(单选按钮和复选框需要相同的name值)
+                value:input控件中的默认值,给后台人员使用
+                size:input控件在页面中的显示宽度
+                checked:选择控件默认被选中的项(单选按钮和复选框可以设置)
+                maxLength:控件允许输入的最多字符数 -->
+        用户名:<input type="text" name="username" value="psj" maxlength="3"><br>
+        密码:<input type="password" name="password"><br>
+        <!-- 单选框必须要name属性，要不然可以多选 -->
+        性别:男<input type="radio" name="sex" checked="checked">女<input type="radio" name="sex"><br>
+        爱好:
+        篮球<input type="checkbox" name="hobby" checked="checked">
+        足球<input type="checkbox" name="hobby">
+        游戏<input type="checkbox" name="hobby"><br>
+        <input type="button" value="短信验证"><!--不会提交数据到服务器，和JS配合使用-->
+        <input type="submit" value="提交信息">
+        <input type="reset" value="重置信息"><br><!--重置表单所有信息-->
+        <!-- 2.label标签:主要用于提供用户体验
+                不属于表单，但是经常和input搭配使用
+                当点击label标签的时候, 被绑定的表单元素就会获得输入焦点-->
+        <label for="postgraduate">研究生</label><input type="radio" name="study" id="postgraduate">
+        <label for="doctor">博士</label><input type="radio" name="study" id="doctor">
+        <!-- 3.select表单元素 -->
+        籍贯:
+        <select>
+            <option value="guangdong">广东</option>
+            <option value="jiangxi" selected="selected">江西</option>
+            <option value="beijing">北京</option>
+        </select>
+        <br>
+        <!-- 4.textarea表单元素 -->
+        <textarea name="feedback" id="feedback" cols="5" rows="5">默认文字</textarea>
+    </form>
+</body>
+
+</html>

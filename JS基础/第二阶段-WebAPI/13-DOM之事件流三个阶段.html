@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13-DOM之事件流三个阶段</title>
+    <style>
+        .father {
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            background-color: pink;
+            text-align: center;
+        }
+
+        .son {
+            width: 200px;
+            height: 200px;
+            margin: 50px;
+            background-color: purple;
+            line-height: 200px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">son盒子</div>
+    </div>
+</body>
+<script>
+    // 1.什么是DOM事件流:事件发生时会在元素节点之间按特定顺序传播,该传播过程就是DOM事件流
+    // 2.DOM事件流分为三个阶段:
+    //   捕获阶段、当前目标阶段、冒泡阶段
+    // 3.验证DOM事件流:
+    //  ① JS代码中只能执行捕获或者冒泡其中的一个阶段
+    //  ② onclick和attachEvent只能得到冒泡阶段,onblur和onfocus等没有冒泡阶段
+    //  ③ 如果addEventListener第三个参数是true,则处于捕获阶段,过程如下:
+    //      document -> html -> body -> father -> son(下面代码先弹出father再弹出son)
+    // var son = document.querySelector('.son');
+    // son.addEventListener('click', function() {
+    //     alert('son');
+    // }, true);
+    // var father = document.querySelector('.father');
+    // father.addEventListener('click', function() {
+    //     alert('father');
+    // }, true);
+    //  ④ 如果addEventListener第三个参数是false或者省略,则处于冒泡阶段,过程如下:
+    //      son -> father ->body -> html -> document(下面代码先弹出son再弹出father,最后弹出document)
+    var son = document.querySelector('.son');
+    son.addEventListener('click', function () {
+        alert('son');
+    }, false);
+    var father = document.querySelector('.father');
+    father.addEventListener('click', function () {
+        alert('father');
+    }, false);
+    document.addEventListener('click', function () {
+        alert('document');
+    })
+</script>
+
+</html>

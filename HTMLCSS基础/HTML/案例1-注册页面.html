@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4>注册页面</h4>
+    <table width="500" border="1">
+        <tr>
+            <td>性别:</td>
+            <td>
+                <input type="radio" name="sex" id="man" checked="checked"><label for="man"><img src="img/man.jpg">
+                    男</label>
+                <input type="radio" name="sex" id="women"><label for="women"><img src="img/women.jpg"> 女</label>
+            </td>
+        </tr>
+        <tr>
+            <td>生日:</td>
+            <td>
+                <select>
+                    <option>--请选择年份--</option>
+                    <option>1997</option>
+                    <option>1998</option>
+                    <option>1999</option>
+                    <option>2000</option>
+                </select>
+                <select>
+                    <option>--请选择月份--</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>所在地区:</td>
+            <td>
+                <input type="text" value="昆明">
+            </td>
+        </tr>
+        <tr>
+            <td>学历:</td>
+            <td>
+                <input type="radio" name="study" id="under"><label for="under">本科</label>
+                <input type="radio" name="study" id="post" checked="checked"><label for="post">研究生</label>
+                <input type="radio" name="study" id="doctor"><label for="doctor">博士</label>
+            </td>
+        </tr>
+        <tr>
+            <td>爱好:</td>
+            <td>
+                <select>
+                    <option>--请选择爱好--</option>
+                    <option>篮球</option>
+                    <option>足球</option>
+                    <option>游戏</option>
+                    <option>网球</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>自我介绍:</td>
+            <td>
+                <textarea cols="10" rows="5">个人简介</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="注册">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="checkbox" checked="checked">我同意条款
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

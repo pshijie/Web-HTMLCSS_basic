@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-DOM之节点操作</title>
+    <script>
+        //  获取元素有两种方式:
+        //  1.利用DOM提供的方法:
+        //      如document.getElementById()等,但是逻辑性不强且繁琐,比如要获取ul中的li元素,需要先获取ul标签,再去获取li
+        //  2.利用节点层级关系获取:
+        //      利用父子兄弟关系获取元素,逻辑性强但是兼容性稍差
+        //      节点至少拥有nodeType(1为元素节点、2为属性节点、3为文本节点)、nodeName和nodeValue三个基本属性
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <span class="erweima">父节点操作</span>
+    </div>
+    <ul>
+        <li>子节点操作1</li>
+        <li>子节点操作2</li>
+    </ul>
+
+    <span>兄弟节点1</span>
+    <div class="bro">兄弟节点</div>
+    <span>兄弟节点2</span>
+
+    <ul class="createNode">
+        <li>第一个li</li>
+    </ul>
+
+    <ul class="deleteNode">
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+    </ul>
+
+    <ul class="copyNode">
+        <li>li11</li>
+    </ul>
+</body>
+<script>
+    // 1.节点层级关系:
+    // ① parentNode:获取span(class="erweima")的父元素div(class="box")
+    var erweima = document.querySelector('.erweima');
+    var box_old = document.querySelector('.box')  // 使用之前方式获取
+    var box_new = erweima.parentNode;
+    console.log(box_new);
+    // ② childNodes和childNode:获取ul中的所有li
+    var ul = document.querySelector('ul')
+    var lis_old = ul.querySelectorAll('li')  // 使用之前方式获取
+    lis_new = ul.childNodes  // childNodes是标准写法,会把当前元素所有子节点(包括不需要的文本节点)全部获取
+    console.log(lis_new);  // 打印的结果为NodeList(3) [text, li, text],其中两个文本节点text分别表示ul后面的空白行和li前面的空白行
+    li_new = ul.children  // childNode是非标准写法,会把当前元素所有子元素节点(不是所有子节点)全部获取
+    console.log(li_new);  // 打印的结果为HTMLCollection[li]
+    // ③ firstChild/lastChild(firstElementChild和lastElementChild存在兼容性问题):获取ul中的第一个/最后一个li
+    var ul = document.querySelector('ul')
+    li_first_1 = ul.firstChild  // 返回第一个子节点(包括文本节点)
+    console.log(li_first_1);  // 打印的结果为#text
+    li_first_2 = ul.firstElementChild  // 返回第一个子元素节点
+    console.log(li_first_2);  // 打印的结果为<li>子节点操作1</li>
+    li_first_3 = ul.children[0]  // 实际开发中使用该方式可以避免兼容性问题
+    console.log(li_first_3);
+    // ④ nextSibling/previousSibling(nextElementSibling和lastElementSibling存在兼容性问题):获取div(class="bro")的下一个/上一个兄弟节点
+    var div = document.querySelector('.bro')
+    var span_1 = div.nextSibling  // 获取当前节点的下一个兄弟节点(包括不需要的文本节点)
+    console.log(span_1);  // 打印的结果为#text
+    var span_2 = div.nextElementSibling  // 获取当前节点的下一个兄弟元素节点
+    console.log(span_2);  // 打印的结果为<span>兄弟节点2</span>
+
+    // 2.创建和添加节点
+    // ①先创建
+    var li_1 = document.createElement('li')
+    var li_2 = document.createElement('li')
+    var ul_append = document.querySelector('.createNode')
+    // ②再添加
+    ul_append.appendChild(li_1)  // appendChild是在父节点末尾追加子节点
+    ul_append.insertBefore(li_2, ul_append.children[0])  // 表示在父节点第一个孩子前插入新节点
+
+    // 3.删除节点
+    var ul_delete = document.querySelector('.deleteNode')
+    ul_delete.removeChild(ul_delete.children[0])
+
+    // 4.复制节点
+    var ul_copy = document.querySelector('.copyNode')
+    var li = ul_copy.children[0].cloneNode(true)  // cloneNode中没有参数或者为false则为浅拷贝,即只复制节点本身,不复制节点的内容
+    ul_copy.appendChild(li)
+
+</script>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本属性</title>
+    <style>
+        div {
+            /* 定义文本颜色 */
+            color: blue;
+            /* 设置元素内文本内容水平对齐方式 */
+        }
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            /* 给文本添加下划线、删除线、上划线等 */
+            /* 可以使用none将链接的下划线删除 */
+            text-decoration: none;
+        }
+
+        #indent {
+            /* 定义文本第一行缩进距离 */
+            /* em表示当前一个文字的大小 */
+            text-indent: 2em;
+        }
+
+        .lw {
+            /* 设置每一行的行间距(即每一行占的高度) */
+            /* 行间距包括文本自身高度加上下间距 */
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>颜色属性</div>
+    <p>对齐属性</p>
+    <a href="#">装饰属性</a>
+    <div id="indent">文本缩进属性</div>
+    <div class="lw">
+        <p>行间距测试1</p>
+        <p>行间距测试2</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素显示模式</title>
+    <!-- 元素显示模式即元素以什么方式显示,如div自己占一行,分为块元素和行内元素 -->
+    <!-- Ⅰ、块元素:h1-h6、p、div、ul、ol、li等,特点如下:
+                1.独占一行(即使设置后的宽度不足一行,其他元素也不能填充剩余部分)
+                2.高度、宽度、外边距和内边距都可以控制
+                3.宽度默认是容器(父级元素宽度)的100%
+                4.是一个盒子,里面可以放行内元素或块级元素(文字类元素如p、h1-h6中不能放块级元素)-->
+    <!-- Ⅱ、行内元素:a、strong、u、span等,特点如下:
+                1.一行可显示多个行内元素
+                2.无法直接设置宽和高
+                3.默认的宽度是其内容的宽度
+                4.只能容纳文本或其他行内元素(a元素中可以放置块级元素,但不能再放置a元素) -->
+    <!-- Ⅲ、行内块元素:img、input、td,即同时具有块元素和行内元素的特点,具体特点如下:
+                1.一行可显示多个,但是每个之间会有空隙
+                2.高度、宽度、外边距和内边距都可以控制
+                3.默认的宽度是其内容的宽度 -->
+
+    <!-- 将行内元素、块级元素和行内块元素相互转换
+                1.将行内/行内块->块级:加上display: block;
+                2.将块级/行内块->行内:加上display: inline;
+                3.将块级/行内->行内块:加上display: inline-block; -->
+
+    <style>
+        div {
+            width: 1200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        input {
+            width: 1200px;
+        }
+
+        a {
+            width: 100px;
+            height: 100px;
+            display: block;
+            background-color: yellow;
+        }
+
+        #inline {
+            display: inline;
+            background-color: azure;
+        }
+
+        #inlineblock {
+            display: inline-block;
+            background-color: red;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>块级元素</div>
+    <span>行内元素1</span><a href="#">行内元素2</a><br>
+    <input type="text" value="行内块元素">
+
+    <a href="#">行内元素->块级元素(增加了a元素的触发范围)</a>
+    <div id="inline">块级元素->行内元素(此时的div不再独占一行)</div><span>块级元素->行内元素</span><br>
+
+    <span id="inlineblock">行内元素->行内块元素1</span><span id="inlineblock">行内元素->行内块元素2</span>
+</body>
+
+</html>

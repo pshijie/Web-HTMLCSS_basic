@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复合选择器</title>
+    <style>
+        /* 1.后代选择器:可以为父元素中的子元素添加某个样式 */
+        /* 注意:父元素的样式不会改变 */
+        ol li {
+            color: pink;
+        }
+
+        /* 后代选择器可以是任意基础选择器的组合,比如父类元素中有类选择器,则可以使用类选择器代替父元素的标签选择器 */
+        .nav li {
+            text-align: center;
+        }
+
+        /* 2.子元素选择器:只能选择最近一级的子元素,即亲儿子元素 */
+        .nav>a {
+            text-decoration: none;
+        }
+
+        /* 3.并集选择器:选择多组标签并同时定义相同的样式 */
+        span,
+        p,
+        .bingji li {
+            color: aquamarine;
+        }
+
+        /* 4.伪类选择器:向某些选择器添加特殊的效果 */
+        /* Ⅰ、链接伪类选择器,为了确保生效需要按照link->visited->hover->active顺序设置 */
+        /* ①为未点击过的链接设置样式 */
+        a:link {
+            color: burlywood;
+        }
+
+        /* ②为点击过的链接设置样式 */
+        a:visited {
+            color: aquamarine;
+        }
+
+        /* ③为鼠标经过的链接设置样式(常用) */
+        a:hover {
+            text-decoration: none;
+        }
+
+        /* ④为鼠标点击但未弹起的链接设置样式 */
+        a:active {
+            color: red;
+        }
+
+        /* Ⅱ、focus伪类选择器,用于选取获得焦点的表单元素,一般用于input标签 */
+        input:focus {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <ol>
+        <li>后代选择器测试1</li>
+    </ol>
+    <ul>
+        <li>后代选择器测试2</li>
+    </ul>
+    <ul class="nav">
+        <li>后代选择器测试3</li>
+    </ul>
+
+    <div class="nav">
+        <a href="#">子元素选择器测试-son</a>
+        <p>
+            <a href="#">子元素选择器测试-grandson</a>
+        </p>
+    </div>
+
+    <span>并集选择器1</span>
+    <p>并集选择器2</p>
+    <ul class="bingji">
+        <li>并集选择器3</li>
+    </ul>
+
+    <a href="#">链接伪类选择器</a><br>
+
+    <input type="text" value="focus伪类选择器">
+</body>
+
+</html>
