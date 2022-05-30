@@ -191,3 +191,11 @@
   - 属性
   - 方法
 
+- navigator对象
+- history对象
+
+### 2.3 PC端网页特效
+
+- 元素偏移量offset：
+  - 相关属性
+  - 和style的区别
