@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24-PC端网页特效之元素偏移量offset系列</title>
+    <script>
+        // offset系列相关属性可以动态得到元素的位置(偏移量)、大小等(返回的数值不带单位):
+        //      ① 获得元素距离带有定位父元素的位置
+        //      ② 获取元素自己的大小(宽高度):包含padding + border + width
+        //      ③ 获取带有定位的父元素
+
+        // offset和style的区别:
+        //      ① offset可以获取任意样式表中的样式值,style只能获取行内样式表中的样式值
+        //      ② offset获得的值没有单位,style.width能获取到带有单位的字符串
+        //      ① offsetWidth包含padding + border + width,style.width只有width的值
+        //      ① offsetWidth是只读的,style.width可写
+        //      ① 要获取元素大小位置使用offset,要修改元素值使用style
+
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .father {
+            /**加上定位**/
+            /* position: relative; */
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 150px;
+        }
+
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            margin-left: 45px;
+        }
+
+        .w {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            margin: 0 auto 200px;
+            padding: 10px;
+            border: 15px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <div class="w"></div>
+
+</body>
+<script>
+    var father = document.querySelector('.father');
+    var son = document.querySelector('.son');
+    // 1.获取元素偏移位置:
+    // 可以得到father元素自己的偏移位置(返回的不带单位的数值)
+    console.log(father.offsetTop);  // 150
+    console.log(father.offsetLeft);  // 150
+    // 子元素以带有定位的父元素为准  如果没有父元素或者父元素没有定位,则以body为准
+    console.log(son.offsetLeft);  // 如果父元素设置position: relative则打印45,没有则打印195=150+45
+    var w = document.querySelector('.w');
+    // 2.获取元素大小:
+    console.log(w.offsetWidth);  // 输出250=200+2*10+15*2
+    console.log(w.offsetHeight);  // 输出250=200+2*10+15*2
+    // 3.返回带有定位的父亲
+    console.log(son.offsetParent); // 返回定位后的父元素<div class="father">...</div>,否则返回的是body
+    console.log(son.parentNode); // 返回父元素<div class="father">...</div>(不管父元素有没有定位)
+</script>
+
+</html>
