@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 将每一块部分在整个页面中进行水平居中 */
+.w {
+    width: 1200px;
+    /* auto表示将元素居中 */
+    margin: auto;
+}
+
+li {
+    list-style: none;
+}
+
+.header {
+    height: 42px;
+    background-color: pink;
+    /* 该处会层叠w里面的margin */
+    margin: 30px auto;
+}
+
+.logo {
+    /* 为了让nav部分浮动和logo在同一行,需要将logo部分也加上浮动 */
+    float: left;
+    width: 198px;
+    height: 42px;
+    background-color: purple;
+}
+
+.nav {
+    float: left;
+    margin-left: 60px;
+}

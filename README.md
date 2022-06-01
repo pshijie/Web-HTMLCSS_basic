@@ -199,3 +199,10 @@
 - 元素偏移量offset：
   - 相关属性
   - 和style的区别
+- 元素可视区client：
+  - 相关属性
+  - 和offset的区别
+- 元素滚动scroll：
+  - 相关属性
+  - 和client的区别
+

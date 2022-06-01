@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27.24-26中三大系列总结</title>
+    <style>
+        .father {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            margin: 100px auto;
+        }
+
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+    </style>
+    <script>
+        // 1.offset系列常用于获取元素位置:offsetLeft和offsetTop
+        // 2.client系列常用于获取元素大小:clientWidth和clientHeight
+        // 3.scroll系列常用于获取滚动距离:scrollTop和scrollLeft
+        // 4.页面的滚动距离使用window.pageXoffset/pageYoffset获取
+        // 5.mouseover和mouseenter的区别:
+        //   ① mouseover在鼠标经过父盒子自身会触发,经过子盒子也会触发;mouseenter只有经过父盒子自身会触发
+        //   ② mouseenter不会冒泡;mouseover会冒泡(导致①的原因)
+    </script>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+<script>
+    var father = document.querySelector('.father');
+    var son = document.querySelector('.son');
+    // father.addEventListener('mouseenter', function () {
+    //     console.log('鼠标经过!');
+    // })
+    father.addEventListener('mouseover', function () {
+        console.log('鼠标经过!');
+    })
+</script>
+
+</html>

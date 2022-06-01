@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例24-淘宝flexible源码分析</title>
+    <script>
+        // 1.立即执行函数:不需要调用立马可以自己执行的函数,并且独立创建了一个作用域(即函数中所有变量都是局部变量)
+        //  注意:
+        //      ① 如果有多个立即执行函数时,需要在每个函数末尾加上分号,要不然会报错
+        //      ② 可以加上函数名,也可以不加
+
+        // 普通函数的执行:
+        // function fn(){
+        //     console.log('普通函数执行');
+        // }
+        // fn()
+
+        // 立即执行函数写法1:
+        (function name1() {
+            console.log('立即执行函数写法1-空参');
+        })();
+
+        (function name2(a) {
+            console.log('立即执行函数写法1-传参' + a);
+        })(666);  // 第二个小括号相当于调用函数,所以可以传递参数
+
+        // 立即执行函数写法2:
+        (function name3(a) {
+            console.log('立即执行函数写法2-传参' + a);
+        }(666))
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
