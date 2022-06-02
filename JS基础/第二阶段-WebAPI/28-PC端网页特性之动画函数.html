@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28-PC端网页特性之动画函数</title>
+    <script>
+        // 1.动画实现原理:通过定时器setInterval()不断移动盒子位置
+        //   注意:要实现动画必须要加上定位
+
+        // 2.动画函数的简单封装:需要传递动画对象和移动到的距离
+
+        // 3.给不同元素记录不同的定时器:
+        //   原理:利用JS是动态语言,可以很方便的给当前对象添加属性
+        //   优点:不需要为每个对象的定时器都进行命名,并且节约空间(每声明一个变量就需要开启一块内存空间)
+
+        // 4.缓动动画:让元素运动速度有所变化
+        //   思路:让盒子每次移动的距离逐渐减小,即速度变慢
+        //   实现:每次移动距离=(目标值-元素当前位置)/10
+
+        // 5.动画函数添加回调函数:
+        //   回调函数:将函数作为一个参数传到另一个函数中,当该函数执行完后再去执行传入的函数,被传入的函数被称为回调函数
+    </script>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn1">给不同元素记录不同的定时器</button>
+    <button class="btn2">缓动动画</button>
+    <button class="btn3">动画函数添加回调函数</button>
+    <div class="div1">动画原理</div>
+    <div class="div2">简单动画封装</div>
+    <div class="div3">给不同元素记录不同的定时器</div>
+    <div class="div4">缓动动画</div>
+    <div class="div5">动画函数添加回调函数</div>
+</body>
+<script>
+    // 1.动画原理
+    var div1 = document.querySelector('.div1');
+    var timer1 = setInterval(function () {
+        if (div1.offsetLeft >= 300) {
+            // 停止动画的本质就是停止定时器
+            clearInterval(timer1)
+        }
+        div1.style.left = div1.offsetLeft + 1 + 'px'
+    }, 30);
+
+    // 2.简单动画函数封装
+    function animate1(obj, target) {
+        var timer2 = setInterval(function () {
+            if (obj.offsetLeft >= target) {
+                // 停止动画的本质就是停止定时器
+                clearInterval(timer2)
+            }
+            obj.style.left = obj.offsetLeft + 2 + 'px'
+        }, 30)
+    };
+    var div2 = document.querySelector('.div2');
+    animate1(div2, 400);
+
+    // 3.给不同元素记录不同的定时器
+    function animate2(obj, target) {
+        // 先清除原来的定时器(如果不清除,则不停点击按钮元素移动速度会加快,因为开启了多个定时器)
+        clearInterval(obj.timer)
+        obj.timer = setInterval(function () {
+            if (obj.offsetLeft >= target) {
+                // 停止动画的本质就是停止定时器
+                clearInterval(obj.timer)
+            }
+            obj.style.left = obj.offsetLeft + 3 + 'px'
+        }, 30)
+    };
+    var div3 = document.querySelector('.div3');
+    var button1 = document.querySelector('.btn1')
+    button1.addEventListener('click', function () {
+        animate2(div3, 500);
+    })
+
+    // 4.缓动动画
+    function animate3(obj, target) {
+        // 先清除原来的定时器(如果不清除,则不停点击按钮元素移动速度会加快,因为开启了多个定时器)
+        clearInterval(obj.timer)
+        obj.timer = setInterval(function () {
+            // 计算步长值(为了避免出现小数,所以进行取整操作)
+            var step = (target - obj.offsetLeft) / 10
+            step = step > 0 ? Math.ceil(step) : Math.floor(step)
+            if (obj.offsetLeft >= target) {
+                // 停止动画的本质就是停止定时器
+                clearInterval(obj.timer)
+            }
+
+            obj.style.left = obj.offsetLeft + step + 'px'
+        }, 30)
+    };
+    var div4 = document.querySelector('.div4');
+    var button2 = document.querySelector('.btn2')
+    button2.addEventListener('click', function () {
+        animate3(div4, 600);
+    })
+
+    // 5.动画函数添加回调函数
+    function animate4(obj, target, callback) {
+        // 先清除原来的定时器(如果不清除,则不停点击按钮元素移动速度会加快,因为开启了多个定时器)
+        clearInterval(obj.timer)
+        obj.timer = setInterval(function () {
+            // 计算步长值(为了避免出现小数,所以进行取整操作)
+            var step = (target - obj.offsetLeft) / 10
+            step = step > 0 ? Math.ceil(step) : Math.floor(step)
+            if (obj.offsetLeft == target) {
+                // 停止动画的本质就是停止定时器
+                clearInterval(obj.timer)
+                // 如果有传入回调函数才调用
+                if (callback) {
+                    callback();  // 函数调用需要加上小括号
+                }
+            }
+
+            obj.style.left = obj.offsetLeft + step + 'px'
+        }, 30)
+    };
+    var div5 = document.querySelector('.div5');
+    var button3 = document.querySelector('.btn3')
+    button3.addEventListener('click', function () {
+        animate4(div5, 700, function () {
+            div5.style.backgroundColor = 'red'
+        });
+    })
+</script>
+
+</html>
