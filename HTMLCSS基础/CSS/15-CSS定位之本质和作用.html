@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15-CSS定位之本质和作用</title>
+    <style>
+        /**
+            1.为什么需要定位?
+              ① 某元素在一个盒子内自由移动,并且压住其他盒子
+              ② 滚动窗口时,盒子固定在屏幕的某个位置
+              上述两种情况,标准流和浮动都无法快速实现,此时需要定位实现
+
+            2.定位的作用:
+              ① 让多个块级盒子在一行间没有间隙排列
+              ② 让盒子自由在某个盒子内移动或者固定在屏幕某个位置,且压住其他盒子
+
+            3.定位的组成:定位模式+边偏移
+              定位模式用于指定一个元素在文档中的定位方式,通过position属性设置,分为以下四个:
+              ① static:静态定位
+              ② relative:相对定位
+              ③ absolute:决对定位
+              ④ fixed:固定定位
+              边偏移决定该元素的最终位置,有四个属性(标准流和浮动没有):
+              ① top:定位元素相对于父元素的上边线距离,比如top:80px
+              ② bottom:定位元素相对于父元素的下边线距离
+              ③ left:定位元素相对于父元素的左边线距离
+              ④ right:定位元素相对于父元素的右边线距离
+        **/
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
