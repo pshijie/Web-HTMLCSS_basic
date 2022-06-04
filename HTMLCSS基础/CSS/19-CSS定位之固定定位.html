@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19-CSS定位之固定定位</title>
+    <style>
+        /*
+            1.固定定位使元素固定于浏览器可视区的位置,且浏览器页面滚动时元素位置也不会改变
+            2.语法:
+                选择器{position:fix;}
+            3.特点:
+              ① 以浏览器的可视窗口为参考点移动元素,和父元素没有关系
+              ② 不占据原位置(脱标),所以也可以视为特殊的绝对定位
+        */
+    </style>
+
+    <!-- Ⅰ、固定定位演示 -->
+    <style>
+        .dj {
+            position: fixed;
+            top: 100px;
+            left: 40px;
+        }
+    </style>
+
+    <!-- Ⅱ、固定定位小技巧 -->
+    <style>
+        .w {
+            width: 800px;
+            height: 1400px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+
+        .fixed {
+            position: fixed;
+            /* 1. 先走浏览器宽度的一半 */
+            left: 50%;
+            /* 2. 再利用margin走版心盒子宽度的一半距离 */
+            margin-left: 405px;
+            width: 50px;
+            height: 150px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Ⅰ、固定定位演示 -->
+    <!-- <div class="dj">
+        <img src="img/pvp.png" alt="">
+    </div>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p>
+    <p>固定定位</p> -->
+
+    <!-- Ⅱ、固定定位小技巧 -->
+    <div class="fixed"></div>
+    <div class="w">版心盒子 800像素</div>
+</body>
+
+</html>

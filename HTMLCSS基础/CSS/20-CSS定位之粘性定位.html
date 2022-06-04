@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20-CSS定位之粘性定位</title>
+    <style>
+        /*
+            1.粘性定位可以认为是相对定位和固定定位的结合
+            2.语法:
+                选择器{position:sticky;}
+            3.特点:
+              ① 以浏览器的可视窗口为参考点移动元素(固定定位特点)
+              ② 占据原位置(不脱标)(相对定位特点)
+              ③ 必须添加top、left、right、bottom中的一个才有效
+              ④ 和页面滚动搭配使用,但是兼容性差(所以使用滚动效果一般使用JS实现)
+        */
+    </style>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        .nav {
+            /* 粘性定位 */
+            position: sticky;
+            top: 0;
+            width: 800px;
+            height: 50px;
+            background-color: pink;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 当移动滚动条时,该div也随着移动;滚动条移动到底部后,该div便固定住了 -->
+    <div class="nav">导航栏</div>
+
+</body>
+
+</html>

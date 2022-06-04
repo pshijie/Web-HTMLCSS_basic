@@ -94,21 +94,24 @@
     - 添加伪元素after
     - 添加双伪元素before和after
 
-## 8.定位:exclamation:
+## 8.定位
 
 - 定位的本质:
   - 定位模式:
     - 静态定位
-    - 相对定位
-    - 决对定位
-    - 固定定位
+    - 相对定位:exclamation:
+    - 决对定位:exclamation:
+    - 固定定位:exclamation:
+    - 粘性定位
   - 边偏移:
     - top
     - bottom
     - left
-    - right
-
+  - right
+  
 - 定位的作用
+
+  
 
 # JS
 
