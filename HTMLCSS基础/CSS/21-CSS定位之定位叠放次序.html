@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21-CSS定位之定位叠放次序</title>
+    <style>
+        /*
+            1.作用:在使用定位布局时,会出现盒子重叠的情况,此时可以使用z-index控制盒子的前后次序
+            2.语法: 选择器{z-index:1;}
+            3.注意:
+                ① 数值可以是整数、负数或0,数值越大盒子越靠上(默认是auto)
+                ② 如果多个盒子都没有指定数值或者数值相同,则写在后面的越靠上(后来者居上)
+                ③ 数值不能加单位
+                ④ 只有定位的盒子才有该属性
+        */
+    </style>
+    <style>
+        .box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+        }
+
+        .box1 {
+            background-color: red;
+            z-index: 1;
+        }
+
+        .box2 {
+            background-color: green;
+            left: 50px;
+            top: 50px;
+            z-index: 2;
+        }
+
+        .box3 {
+            background-color: blue;
+            left: 100px;
+            top: 100px;
+            /* z-index: -1; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1">盒子1</div>
+    <div class="box box2">盒子2</div>
+    <div class="box box3">盒子3</div>
+</body>
+
+</html>
