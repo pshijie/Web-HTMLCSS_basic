@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23-元素的显示和隐藏</title>
+    <style>
+        /*
+            1.display: 隐藏元素后,该元素不再占有原来的位置(但是该元素还存在)
+              ① display:none; : 隐藏对象
+              ② display:block; : 除了转换为块级元素外,还有显示元素的意思
+
+            2.visibility: 隐藏元素后,该元素继续占有原来的位置
+              ① visibility:visible; : 元素可视
+              ② visibility:hidden; : 元素隐藏
+
+            3.overflow: 决定如何处理溢出的内容
+              ① overflow: visible; : 显示溢出的内容
+              ② overflow: hidden; : 隐藏溢出的内容
+              ③ overflow: scroll; : 溢出的部分显示滚动条(不溢出的时候也显示滚动条)
+              ④ overflow: auto; : 溢出的部分显示滚动条(不溢出不显示滚动条)
+        */
+    </style>
+    <style>
+        /* 1.display: */
+        .display1 {
+            display: none;
+            /* display: block; */
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+
+        }
+
+        .display2 {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+
+        /* 2.visibility: */
+        .visibility1 {
+            visibility: hidden;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+
+        }
+
+        .visibility2 {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+
+        /* 3.overflow: */
+        .overflow {
+            overflow: scroll;
+            width: 200px;
+            height: 200px;
+            border: 3px solid pink;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="display1">display1</div>
+    <div class="display2">display2</div>
+
+    <div class="visibility1">visibility1</div>
+    <div class="visibility2">visibility2</div>
+
+    <div class="overflow">
+        《小猪佩奇》，又名《粉红猪小妹》（台湾名为粉红猪），英文名为《Peppa
+        Pig》，是由英国人阿斯特利（Astley）、贝克（Baker）、《小猪佩奇》，又名《粉红猪小妹》（台湾名为粉红猪），英文名为《Peppa
+        Pig》，是由英国人阿斯特利（Astley）、贝克（Baker）、《小猪佩奇》，又名《粉红猪小妹》（台湾名为粉红猪），英文名为《Peppa
+        Pig》，是由英国人阿斯特利（Astley）s、贝克（Baker）、《小猪佩奇》，又名《粉红猪小妹》（台湾名为粉红猪），英文名为《Peppa
+        Pig》，是由英国人阿斯特利（Astley）、贝克（Baker）、《小猪佩奇》，又名《粉红猪小妹》（台湾名为粉红猪），英文名为《Peppa
+        Pig》，是由英国人阿斯特利（Astley）、贝克（Baker）、《小猪佩奇》，又名《粉红猪小妹》（台湾名为粉红猪），英文名为《Peppa
+        Pig》，是由英国人阿斯特利（Astley）、贝克（Baker）
+    </div>
+</body>
+
+</html>
