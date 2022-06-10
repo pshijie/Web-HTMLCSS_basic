@@ -118,6 +118,13 @@
 - visibility
 - overflow
 
+## 10.CSS高级技巧
+
+- 精灵图：
+  - 作用
+  - 原理
+  - 实现
+
 
 
 # JS
