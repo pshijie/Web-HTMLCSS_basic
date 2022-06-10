@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-jQuery的基本使用之jQuery对象和DOM对象</title>
+    <script src="jquery.min.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <span></span>
+    <video src="mov.mp4" muted></video>
+
+    <script>
+        // 1.DOM对象:用原生js获取过来的对象
+        var myDiv = document.querySelector('div'); // myDiv是DOM对象
+        var mySpan = document.querySelector('span'); // mySpan是DOM对象
+        console.dir(myDiv);  // div(...)
+
+        // 2.jQuery对象:用jquery方式获取过来的对象。本质即通过$把DOM元素进行了包装
+        $('div'); // $('div')是一个jQuery 对象
+        $('span'); // $('span')是一个jQuery 对象
+        console.dir($('div'));  // w.fn.init(1)s
+
+        // 3.jQuery对象只能使用jQuery方法，DOM对象只能使用原生的JS属性和方法
+        myDiv.style.display = 'none';
+        // 下面两种方式报错:
+        // myDiv.hide(); // myDiv是DOM对象,不能使用jquery里面的hide方法
+        // $('div').style.display = 'none';  // $('div')是jQuery对象,不能使用原生js的属性和方法
+
+        // 4.jQuery对象和DOM对象间的转换:原生JS的一些属性和方法jquery并没有封装,要使用这些属性和方法需要把jquery对象转换为DOM对象
+        // Ⅰ、DOM对象转换为jQuery对象:$(DOM对象)
+        // ① 直接获取视频元素，并将其转换
+        // $('video');
+        // ② 先使用原生js获取DOM对象,再进行转换
+        // var myvideo = document.querySelector('video');
+        // $(myvideo)
+        // Ⅱ、jQuery对象转换为DOM对象:$('元素')[index]或者$('元素').get(index)  index为索引号
+        // var myvideo = document.querySelector('video');
+        // myvideo.play();  // 因为jquery对象中不存在play方法,所以$(myvideo).play()报错
+        $('video')[0].play()
+        $('video').get(0).play()
+    </script>
+</body>
+
+</html>
