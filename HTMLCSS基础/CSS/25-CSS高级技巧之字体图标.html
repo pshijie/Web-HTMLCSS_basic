@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25-CSS高级技巧之字体图标</title>
+    <style>
+        /*
+            1.精灵图的缺点:
+              ① 图片文件较大
+              ② 图片本身放大和缩小会失真
+              ③ 图片制作完毕后要更换比较复杂
+            2.本质:字体图标展示的是图标,但其本质属于字体
+            3.优点:
+              ① 比图像小,一旦加载会立马渲染(减少了服务器的请求)
+              ② 可以随意更改颜色等(因为是文字)
+              ③ 几乎支持所有浏览器
+            4.使用场景:结构和样式较简单的小图标用字体图标;结构和样式复杂的图片还是用精灵图
+            5.使用步骤:
+              ① 在icomoon网站中找到需要的图标并下载
+              ② 进行字体声明(声明代码固定)
+              ③ 元素的内容中添加需要展示图标的特殊符号
+              ④ 根据要求修改元素中文字图标的大小等
+        */
+    </style>
+    <style>
+        /* 字体声明 */
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?p4ssmb');
+            src: url('fonts/icomoon.eot?p4ssmb#iefix') format('embedded-opentype'),
+                url('fonts/icomoon.ttf?p4ssmb') format('truetype'),
+                url('fonts/icomoon.woff?p4ssmb') format('woff'),
+                url('fonts/icomoon.svg?p4ssmb#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+
+        span {
+            font-family: 'icomoon';
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <span></span>
+    <span></span>
+</body>
+
+</html>
