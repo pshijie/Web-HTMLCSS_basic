@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-bootstrap栅格系统</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+        /*
+            1.栅格系统概念:将页面内容划分为等宽的列,系统会自动分为最多12列
+                    bootstrap中container宽度固定,但是在不同屏幕下,container宽度不同,但还是把container分为12列
+
+            2.基本使用:
+              ① 行必须放在container容器中
+              ② 要实现列的均分,需要给列添加类前缀(.col-lg-xxx表示在大屏中每个盒子占xxx列)
+              ③ 孩子的份数相加和12大小不一致时,显示的效果也会改变
+              ④ 可以为一列指定多个设备的类前缀,以便在不同屏幕大小时划分为不同的份数
+
+            3.列嵌套: 即在一列中继续划分若干列
+         */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- 如果孩子的份数相加等于12,则孩子能占满整个的container的宽度 -->
+        <div class="row">
+            <div class="col-lg-6">1</div>
+            <div class="col-lg-2">2</div>
+            <div class="col-lg-2">3</div>
+            <div class="col-lg-2">4</div>
+        </div>
+        <!-- 如果孩子的份数相加小于12,则占不满整个container的宽度,即会有空白 -->
+        <div class="row">
+            <div class="col-lg-6">1</div>
+            <div class="col-lg-2">2</div>
+            <div class="col-lg-2">3</div>
+            <div class="col-lg-1">4</div>
+        </div>
+        <!-- 如果孩子的份数相加大于12,则多于的那一列会另起一行显示 -->
+
+        <div class="row">
+            <div class="col-lg-6">1</div>
+            <div class="col-lg-2">2</div>
+            <div class="col-lg-2">3</div>
+            <div class="col-lg-3">4</div>
+        </div>
+
+        <!-- 一列指定多个设备的类前缀 -->
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">1</div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">2</div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">3</div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">4</div>
+        </div>
+
+        <!-- 列嵌套 -->
+        <div class="row qiantao">
+            <div class="col-md-4">
+                <!-- 列嵌套最好加1个行row,这样可以取消父元素的padding值 而且高度自动和父级一样高 -->
+                <div class="row">
+                    <div class="col-md-4">a</div>
+                    <div class="col-md-8">b</div>
+                </div>
+            </div>
+            <div class="col-md-4">2</div>
+            <div class="col-md-4">3</div>
+        </div>
+    </div>
+</body>
+
+</html>
