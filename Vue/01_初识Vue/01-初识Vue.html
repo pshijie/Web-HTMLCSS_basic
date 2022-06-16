@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-初识Vue</title>
+    <script src="../js/vue.js"></script>
+    <script>
+        // 1.下面id=root容器中的代码也被称为Vue模板
+        // 2.Vue实例与容器是一一对应的(即一对多和多对一都不行)
+        // 3.{{...}}中需要写JS表达式(一个表达式生成一个值)
+    </script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>hello {{name}}</h1>
+        <!-- 可以对data中的属性使用函数 -->
+        <h1>hello {{name.toUpperCase()}}</h1>
+        <!-- 里面是JS表达式,也是可以显示的(即使不属于Vue实例中的data属性) -->
+        <h1>hello {{Date.now()}}</h1>
+    </div>
+    <script>
+        Vue.config.productionTip = false;  // 关闭vue启动时的生产提示
+        // 创建Vue实例
+        const x = new Vue({
+            el: '#root',  // el用于指定当前Vue实例为哪个容器服务
+            data: {  // data用于存储数据,供el指定的容器使用
+                name: "Vue"
+            }
+        })
+    </script>
+</body>
+
+</html>
