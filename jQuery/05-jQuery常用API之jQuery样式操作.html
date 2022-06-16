@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-jQuery常用API之jQuery样式操作</title>
+    <script>
+        // 1.css方法:前两种情况属性名一定要加引号,第三种属性名可以不加引号
+        //   ① 参数只写属性名,则返回属性值
+        //   ② 参数包括属性名和属性值则是设置样式
+        //   ③ 参数为对象形式则可以修改多组样式
+        // 2.设置类样式:如果需要修改的样式很多,就把这些样式写在css文件中,然后给元素设置类样式即可
+    </script>
+    <script src="jquery.min.js"></script>
+    <style>
+        /*  1.css方法 */
+        /* div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        } */
+
+        /* 2.设置类样式 */
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: pink;
+            margin: 100px auto;
+            transition: all 0.5s;
+        }
+
+        .current {
+            background-color: red;
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+<script>
+    // 1.css方法
+    // $(function () {
+    //     console.log($("div").css("width"));  // 打印200px
+    //     // $("div").css("width", "300px");
+    //     // 如果是复合属性则必须采取驼峰命名法，如果值不是数字则需要加引号
+    //     $("div").css({
+    //         width: 400,
+    //         height: 400,
+    //         backgroundColor: "red"
+    //     })
+    // })
+
+    // 2.设置类样式
+    $(function () {
+        // ① 添加类
+        // $("div").click(function() {
+        //     // $(this).addClass("current");
+        // });
+        // ② 删除类
+        // $("div").click(function() {
+        //     $(this).removeClass("current");
+        // });
+        // ③ 切换类:有该类就删除,没有就添加
+        $("div").click(function () {
+            $(this).toggleClass("current");
+        });
+    })
+</script>
+
+</html>

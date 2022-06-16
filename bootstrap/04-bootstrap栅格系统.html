@@ -19,6 +19,8 @@
               ④ 可以为一列指定多个设备的类前缀,以便在不同屏幕大小时划分为不同的份数
 
             3.列嵌套: 即在一列中继续划分若干列
+
+            4.列偏移:比如使用.col-md-offset-*(*表示偏移的列数)可以将列向右侧偏移(实际通过为要偏移的元素添加了左侧margin)
          */
     </style>
 </head>
@@ -68,6 +70,17 @@
             </div>
             <div class="col-md-4">2</div>
             <div class="col-md-4">3</div>
+        </div>
+
+        <!-- 列偏移 -->
+        <div class="row">
+            <div class="col-md-3">左侧</div>
+            <!-- 让右侧div实现右侧偏移 -->
+            <div class="col-md-3 col-md-offset-6">右侧</div>
+        </div>
+        <div class="row">
+            <!-- 只有一个盒子时实现居中 -->
+            <div class="col-md-8 col-md-offset-2">中间</div>
         </div>
     </div>
 </body>
