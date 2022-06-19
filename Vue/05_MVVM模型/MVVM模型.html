@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVVM模型</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- V:页面,MVVM中的V -->
+    <div id="root">
+        <h1>学校名称:{{name}}</h1>
+        <h1>学校地址:{{address}}</h1>
+        <!-- 在VM中所有的属性和Vue原型上所有属性在Vue模板中都可以直接使用 -->
+        <h1>VM中的属性:{{_c}}</h1>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+    // ViewModel:即Vue实例,MVVM中的VM
+    new Vue({
+        el: '#root',
+        // Model:绑定的数据,MVVM中的M
+        data: {
+            name: 'YNU',
+            address: 'Yunnan'
+        }
+    })
+
+</script>
+
+</html>
