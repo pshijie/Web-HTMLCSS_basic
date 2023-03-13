@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>04_原型链_属性问题</title>
+</head>
+
+<body>
+  <!--
+  读取对象的属性值时: 会自动到原型链中查找
+  设置对象的属性值时: 不会查找原型链, 如果当前对象中没有此属性, 直接添加此属性并设置其值(比如对象a中设置了属性name,此时对象b是访问不到的，因为name并没有添加到原型链中)
+  方法一般定义在原型中, 属性一般通过构造函数定义在对象本身上
+-->
+  <script type="text/javascript">
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    Person.prototype.setName = function (name) {
+      this.name = name;
+    }
+    var p = new Person()
+    console.log(p);  // p对象存在name和age属性
+    console.log(Person.prototype);  // 此时Person.prototype没有name和age属性
+    Person.prototype.sex = '男';
+
+    var p1 = new Person('Tom', 12)
+    p1.setName('Jack')
+    console.log(p1.name, p1.age, p1.sex)// Jack 12 男
+    p1.sex = '女'
+    console.log(p1.name, p1.age, p1.sex)// Jack 12 女
+
+    var p2 = new Person('Bob', 23)
+    console.log(p2.name, p2.age, p2.sex)// Bob 23 男
+    console.log(p1.__proto__ === p2.__proto__);  // true，因为构造函数都是Person(),而对象的隐式原型的值为其对应构造函数的显式原型的值
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>02_关于数据传递问题</title>
+</head>
+
+<body>
+  <!--
+问题: 在js调用函数时传递变量参数时, 是值传递还是引用传递
+    只有值传递, 没有引用传递, 传递的都是变量的值, 只是这个值可能是基本数据, 也可能是地址(引用)数据
+    如果后一种看成是引用传递（地址值）, 那就值传递和引用传递都可以有
+-->
+  <script type="text/javascript">
+    var a = 3
+    function fn(a) {
+      a = a + 1
+    }
+    fn(a)// 传的不是a，而是3这个值
+    console.log(a);// 3
+    /*
+    执行到:fn(a);先读到a是3，把a的值传给形参a，形参a去加1，输出为4。
+    实参a还是实参a，所以最后输出a仍然是3。这里是基本值传递。
+    */
+
+    function fn2(obj) {
+      console.log(obj.name);
+    }
+    var obj = { name: 'Tom' }
+    fn2(obj)
+    /*
+    执行到:fn2(obj);把obj中的内容（不是把{name:‘tom’}传递给形参obj，是把obj的地址值传给形参obj，只是地址值指向的是 {name:‘tom’}）
+          传递给形参obj。这里是地址值传递。
+    */
+  </script>
+</body>
+
+</html>

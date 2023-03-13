@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>02_显式原型与隐式原型</title>
+</head>
+
+<body>
+  <!--
+  每个函数function都有一个prototype，即显式原型
+  每个实例对象都有一个__proto__，可称为隐式原型
+  对象的隐式原型的值为其对应构造函数的显式原型的值
+  内存结构(图)
+  总结:
+    函数的prototype属性: 在定义函数时自动添加的, 默认值是一个空Object对象
+    对象的__proto__属性: 创建对象时自动添加的, 默认值为构造函数的prototype属性值
+    程序员能直接操作显式原型, 但不能直接操作隐式原型(ES6之前)
+-->
+  <script type="text/javascript">
+    function Fn() {  // 内部语句：this.prototype={}
+    }
+    // 每个函数function都有一个prototype，即显式原型
+    console.log(Fn.prototype);  // 原型对象Object
+    // 每个实例对象都有一个__proto__，可称为隐式原型
+    var fn = new Fn()  // 内部语句：this.__proto__ = Fn.prototype
+    console.log(fn.__proto__);  // 也是原型对象Object
+    // 对象的隐式原型的值为其对应构造函数的显式原型的值
+    console.log(Fn.prototype === fn.__proto__)// true
+    //给原型添加方法(操作显式原型)
+    Fn.prototype.test = function () {  // 不能直接写Fn.test,因为Fn是一个函数
+      console.log('test()');
+    }
+    console.log(fn.__proto__);  // {test: ƒ, constructor: ƒ}
+    fn.test()  // 先在fn执行的Fn函数对象中找有没有test()，发现=没有就去__proto__找
+  </script>
+</body>
+
+</html>

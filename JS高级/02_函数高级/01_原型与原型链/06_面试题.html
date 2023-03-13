@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>06_面试题</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    /*
+    测试题1
+     */
+    var A = function () {
+
+    }
+    A.prototype.n = 1
+
+    var b = new A()
+
+    // 此时A的prototype会指向新的原型对象，即不指向包含n=1的原型对象(但是还存在，并且被b的__proto__指向)
+    A.prototype = {
+      n: 2,
+      m: 3
+    }
+
+    var c = new A()
+    console.log(b.n, b.m, c.n, c.m)// 1 undefined 2 3
+
+
+    /*
+    测试题2
+     */
+    var F = function () { };
+    Object.prototype.a = function () {
+      console.log('a()')
+    };
+    Function.prototype.b = function () {
+      console.log('b()')
+    };
+    var f = new F();
+    f.a() // a() f.__proto__===F.prototype，F.prototype.__proto__===Object.prototype
+    // f.b() // b is not a function
+    F.a() // a() F.__proto__===Function.prototype，Function.prototype.__proto__===Object.prototype
+    F.b() // b() F.__proto__===Function.prototype
+  </script>
+</body>
+
+</html>

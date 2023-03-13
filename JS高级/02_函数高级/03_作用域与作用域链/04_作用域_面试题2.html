@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>04_作用域_面试题2</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    /*
+      说说它们的输出情况
+     */
+
+    var fn = function () {
+      console.log(fn)
+    }
+    fn()
+    /* 
+    function () {
+      console.log(fn) 
+    }
+    */
+
+    var obj = {
+      fn2: function () {
+        console.log(fn2)
+        // 答案：输出结果 报错
+        // obj对象里的方法fn2，要输出fn2，开始找这个fn2，自己所在的作用域没找到，跑外面继续找
+        // 跑到全局作用域没找到，输出结果当然报错
+        // 为什么直接输出fn2却找不到obj里那个fn2呢，因为fn2是属于obj的一个属性/方法，要访问到它就得obj.fn2
+        // 要输出fn2函数体的话得这么写  console.log(this.fn2)
+      }
+    }
+    obj.fn2()
+  </script>
+</body>
+
+</html>
