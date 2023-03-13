@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol内置属性</title>
+</head>
+<body>
+    <script>
+        // 以其中两个内置属性为例：
+        // 1.Symbol.hasInstance:控制类型检测，即在执行o instanceof Person输出什么，能获取到什么
+        class Person{
+            static [Symbol.hasInstance](param){
+                console.log(param);  // 获取到的值：{}
+                console.log("我被用来检测类型了");
+                return false;  // 执行o instanceof Person最终输出false
+            }
+        }
+
+        let o = {};
+        console.log(o instanceof Person);  // false
+
+        // 2.Symbol.isConcatSpreadable:表示是否能展开
+        const arr = [1,2,3];
+        const arr2 = [4,5,6];
+        arr2[Symbol.isConcatSpreadable] = false;
+        console.log(arr.concat(arr2));  // [1,2,3,Array(3)]，即没有将arr2展开
+    </script>
+</body>
+</html>

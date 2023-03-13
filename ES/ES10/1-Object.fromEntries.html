@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.fromEntries</title>
+</head>
+<body>
+    <script>
+        // 1.接收二维数组
+        const result1 = Object.fromEntries([
+            ['name','尚硅谷'],
+            ['xueke', 'Java,大数据,前端,云计算']
+        ]);
+        console.log(result1);  // 将二维数组转换为对象
+
+        // 2.接收Map
+        const m = new Map();
+        m.set('name','ATGUIGU');
+        const result2 = Object.fromEntries(m);
+        console.log(result2);
+
+        // ES8中的Object.entries(即Object.fromEntries的逆运算)
+        const arr = Object.entries({
+            name: "尚硅谷"
+        })
+        console.log(arr);  // 将对象转换为二维数组
+    </script>
+</body>
+</html>

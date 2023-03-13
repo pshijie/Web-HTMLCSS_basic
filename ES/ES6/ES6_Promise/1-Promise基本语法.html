@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise基本语法</title>
+</head>
+<body>
+    <script>
+        // Promise是一个构造函数，用来封装异步操作并可以获取其成功或失败的结果
+
+        //实例化 Promise 对象
+        const p = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                // let data = '数据库中的用户数据';
+                // resolve(data);  // 相当于将p的状态置为成功，此时调用成功的代码
+
+                let err = '数据读取失败';
+                reject(err);  // 相当于将p的状态置为失败，此时调用失败的代码
+            }, 1000);
+        });
+
+        //调用 promise 对象的 then 方法
+        p.then(function(value){
+            console.log(value);  // 成功后执行的代码
+        }, function(reason){  // 失败后执行的代码
+            console.error(reason);
+        })
+    </script>
+</body>
+</html>

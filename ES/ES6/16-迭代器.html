@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代器</title>
+</head>
+<body>
+    <script>
+        const xiyou = ['唐僧','孙悟空','猪八戒','沙僧'];
+
+        // 1.使用 for...of 遍历数组(本质上就是使用了数组内部的Symbol.iterator属性)
+        for(let v of xiyou){
+            console.log(v);
+        }
+
+        // 2.通过Symbol内置属性
+        let iterator = xiyou[Symbol.iterator]();
+        // 调用对象的next方法
+        console.log(iterator.next());  // 输出{value:'xxx', done:false}，下面同理
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());  // 输出{value: undefined, done:true}，表示遍历完成
+    </script>
+</body>
+</html>

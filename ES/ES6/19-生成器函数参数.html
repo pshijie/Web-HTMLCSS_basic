@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数参数</title>
+</head>
+<body>
+    <script>
+        function * gen(arg){
+            console.log(arg);
+            let one = yield 111;
+
+            console.log(one);
+            let two = yield 222;
+
+            console.log(two);
+            let three = yield 333;
+            
+            console.log(three);
+        }
+
+        //执行获取迭代器对象
+        let iterator = gen('AAA');
+        console.log(iterator.next());  // 打印'AAA',并且输出{value:111, done:false}
+        //next方法可以传入实参
+        console.log(iterator.next('BBB'));  // 打印'AAA',并且输出{value:222, done:false}
+        console.log(iterator.next('CCC'));  // 打印'BBB',并且输出{value:333, done:false}
+        console.log(iterator.next('DDD'));  // 打印'DDD',并且输出{value:undefined, done:true}
+
+    </script>
+</body>
+</html>

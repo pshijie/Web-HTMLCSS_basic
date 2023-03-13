@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义遍历数据</title>
+</head>
+
+<body>
+    <script>
+        //声明一个对象
+        const banji = {
+            name: "终极一班",
+            stus: [
+                'xiaoming',
+                'xiaoning',
+                'xiaotian',
+                'knight'
+            ],
+            // 这样该对象就是一个可遍历的对象了
+            [Symbol.iterator]() {
+                //索引变量
+                let index = 0;
+                let _this = this;  // 如果不想写这步，可以将next替换为箭头函数，下面就可以直接使用this了
+                return {
+                    next: function () {
+                        if (index < _this.stus.length) {
+                            // 自定义每次返回什么值，这里想返回stus数组中的成员
+                            const result = { value: _this.stus[index], done: false };
+                            //下标自增
+                            index++;
+                            //返回结果
+                            return result;
+                        }else{
+                            return {value: undefined, done: true};
+                        }
+                    }
+                };
+            }
+        }
+
+        //遍历这个对象
+        for (let v of banji) {
+            console.log(v);
+        }
+    </script>
+</body>
+
+</html>

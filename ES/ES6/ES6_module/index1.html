@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 模块化</title>
+</head>
+<body>
+    <script type="module">
+        // 1. 通用的导入方式
+        // 引入 01-m1.js 模块内容
+        import * as m1 from "src/js/01-m1.js";
+        console.log(m1);  // 包含school和teach
+        // 引入 m2.js 模块内容
+        import * as m2 from "src/js/02-m2.js";
+        // 引入 m3.js
+        import * as m3 from "src/js/03-m3.js";
+        // m3.default.change():需要加上default
+
+        // 2. 解构赋值形式
+        import {school, teach} from "src/js/01-m1.js";  // 可以直接使用school和teach了
+        import {school as guigu, findJob} from "src/js/02-m2.js";  // guigu是school的别名
+        import {default as m3} from "src/js/m3.js";  // 此时可以m3.change()
+
+        // 3. 简便形式:针对默认暴露
+        import m3 from "src/js/03-m3.js";
+        console.log(m3);
+    </script>
+
+    <!-- 每次引入都写在html的JS代码中会导致代码过长，可以使用一个JS文件作为入口文件(不过项目中不会这么去引入，而是使用babel，具体见index2.html) -->
+    <script src="src/js/04-app.js" type="module"></script>
+</body>
+</html>

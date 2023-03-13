@@ -1,0 +1,1 @@
+console.log(globalThis);  // 指向全局对象

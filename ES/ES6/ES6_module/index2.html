@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>babel</title>
+</head>
+<body>
+    <!--
+        babel主要将ES6语法转换为浏览器可识别的ES5语法
+        1. 安装工具 npm i babel-cli babel-preset-env browserify(也可使用webpack) -D
+        2. 编译 npx babel src/js -d dist/js --presets=babel-preset-env
+        3. 打包 npx browserify dist/js/app.js -o dist/bundle.js
+     -->
+     <!-- 直接引入dist/js/04-app.js是识别不了的，需要打包为bundle.js -->
+     <script src="dist/bundle.js"></script>
+</body>
+</html>

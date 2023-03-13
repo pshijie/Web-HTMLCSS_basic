@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async函数</title>
+</head>
+<body>
+    <script>
+        // async和await结合可以让异步代码像同步代码一样
+
+        // async 函数:返回值为promise对象，该对象的结果由async函数返回值决定
+        async function fn(){
+            // 返回一个字符串(然后就去执行then方法中成功部分的代码，即console.log(value,"hi"))
+            // return '尚硅谷';  // 尚硅谷 hi
+
+            // 返回的结果不是一个 Promise 类型的对象, 返回的结果就是成功 Promise 对象(然后就去执行then方法中成功部分的代码，即console.log(value,"hi"))
+            return;  // undefined "hi"
+
+            // 抛出错误, 返回的结果是一个失败的 Promise(然后就去执行then方法中失败部分的代码，即console.warn(reason, "。。。"))
+            // throw new Error('出错啦!');
+
+            // 返回的结果如果是一个 Promise 对象(根据调用resolve还是reject决定执行哪个部分的代码)
+            // return new Promise((resolve, reject)=>{
+            //     resolve('成功的数据');
+            //     // reject("失败的错误");
+            // });
+        }
+
+        const result = fn();
+
+        // 调用 then 方法(回调函数)
+        result.then(value => {
+            console.log(value,"hi");
+        }, reason => {
+            console.warn(reason, "。。。");
+        })
+    </script>
+</body>
+</html>

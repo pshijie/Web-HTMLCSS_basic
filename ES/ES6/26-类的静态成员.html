@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态成员</title>
+</head>
+<body>
+    <script>
+        // 1.ES5
+        // 注意：构造函数本身也是一个对象
+        function Phone(){}
+        Phone.name = '手机';  // 此时的name属于函数对象的属性，不是实例对象的属性(静态成员)
+        Phone.change = function(){  // 此时的change属于函数对象的属性，不是实例对象的属性(静态成员)
+            console.log("我可以改变世界");
+        }
+        Phone.prototype.size = '5.5inch';  // 实例对象和原型对象相通
+
+        let nokia1 = new Phone();
+
+        console.log(nokia1.name);  // undefined
+        // nokia1.change();  // undefined
+        console.log(nokia1.size);  // 5.5inch
+
+        // 2.直接使用类(效果和上面一样)
+        class Phone2{
+            //静态属性
+            static name = '手机';
+            static change(){
+                console.log("我可以改变世界");
+            }
+        }
+
+        let nokia2 = new Phone2();
+        console.log(nokia2.name);  // undefined
+        console.log(Phone2.name);  // 手机
+    </script>
+</body>
+</html>
